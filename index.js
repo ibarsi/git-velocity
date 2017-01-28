@@ -9,6 +9,8 @@ const inquirer = require('inquirer');
 
 const bitbucket = require('./lib/bitbucket');
 
+const slug_regex = new RegExp('^(?!\s)([a-z|-]+)$');
+
 // BANNER
 
 clear();
@@ -46,13 +48,13 @@ function getBitBucketCreds() {
             {
                 name: 'username',
                 type: 'input',
-                message: 'Enter your BitBucket username:',
+                message: 'Enter BitBucket username:',
                 validate: value => value.length ? true : 'Please enter a value.'
             },
             {
                 name: 'password',
                 type: 'password',
-                message: 'Enter your password:',
+                message: 'Enter password:',
                 validate: value => value.length ? true : 'Please enter a value.'
             }
         ];
@@ -69,7 +71,7 @@ function getRepositoryName() {
                 type: 'input',
                 message: 'Enter the slugged name of the repository:',
                 // TODO: Properly validate.
-                validate: value => value.length ? true : 'Please enter a valid slug.'
+                validate: value => value.length && slug_regex.test(value) ? true : 'Please enter a valid slug.'
             },
             {
                 name: 'owner',
