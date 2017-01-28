@@ -7,7 +7,7 @@ const chalk = require('chalk');
 const figlet = require('figlet');
 const inquirer = require('inquirer');
 
-const bitbuket = require('./lib/bitbucket');
+const bitbucket = require('./lib/bitbucket');
 
 // BANNER
 
@@ -21,20 +21,20 @@ console.log(
 
 // START
 
-bitbuket.isCredsTokenInitialized()
+bitbucket.isCredsTokenInitialized()
     .then(result => {
         if (result) { return Promise.resolve(); }
 
         console.log(chalk.white('Creating `.bitbucket_token` in root.'));
 
-        return getBitBucketCreds().then(({ username, password }) => bitbuket.storeCreds(username, password));
+        return getBitBucketCreds().then(({ username, password }) => bitbucket.storeCreds(username, password));
     })
     .then(() => {
         console.log(chalk.white('Provide information regarding the repository you\'d like to analyze.'));
 
         return getRepositoryName();
     })
-    .then(({ repository, owner }) => bitbuket.getCommitsByRepo(repository, owner))
+    .then(({ repository, owner }) => bitbucket.getCommitsByRepo(repository, owner))
     .then(console.log)
     .catch(error => console.error(chalk.red(error)));
 
