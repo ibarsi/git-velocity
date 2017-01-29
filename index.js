@@ -1,9 +1,12 @@
+#!/usr/bin/env node
+
 /* ==================================================
     INDEX
 ================================================== */
 
 const clear = require('clear');
 const chalk = require('chalk');
+const CLI = require('clui');
 const figlet = require('figlet');
 const inquirer = require('inquirer');
 
@@ -39,8 +42,16 @@ bitbucket.isCredsTokenInitialized()
 
         return getRepositoryName();
     })
-    // TODO: Add a spinner/loading bar.
-    .then(({ repository, owner }) => bitbucket.getCommitsByRepo(repository, owner))
+    .then(({ repository, owner }) => {
+        const spinner = new CLI.Spinner('Pulling commits...');
+        spinner.start();
+
+        return new Promise((resolve, reject) => {
+            bitbucket.getCommitsByRepo(repository, owner)
+            .then(result => { spinner.stop(); resolve(result); })
+            .catch(error => { spinner.stop(); reject(error); });
+        });
+    })
     .then(result => {
         getVelocityFormat()
             .then(choice => {
@@ -52,7 +63,9 @@ bitbucket.isCredsTokenInitialized()
                 console.log();
                 console.log(chalk.white(`Current commits: ${ commit_velocity.current }`));
                 console.log(chalk.white(`Previous commits: ${ commit_velocity.previous }`));
-                console.log(chalk[commit_velocity.diff > 0 ? 'green' : 'red'](`Difference: ${ commit_velocity.diff }`));
+                console.log(chalk[commit_velocity.diff > 0 ? 'green' : 'red'](
+                    `Difference: ${ commit_velocity.diff > 0 ? '+' : '' }${ commit_velocity.diff }`
+                ));
                 console.log(chalk[commit_velocity.velocity > 0 ? 'green' : 'red'](`Velocity: ${ commit_velocity.velocity }%`));
             });
     })
