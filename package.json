@@ -4,7 +4,8 @@
   "description": "CLI tool used to calculate git commit velocity",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "debug": "node --debug=12345 index.js"
   },
   "author": "Igor Barsi",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "clear": "0.0.1",
     "figlet": "^1.2.0",
     "inquirer": "^3.0.1",
+    "moment": "^2.17.1",
     "request": "^2.79.0"
   }
 }

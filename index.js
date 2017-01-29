@@ -8,6 +8,7 @@ const figlet = require('figlet');
 const inquirer = require('inquirer');
 
 const bitbucket = require('./lib/bitbucket');
+const velocity = require('./lib/velocity');
 
 const slug_regex = new RegExp('^(?!\s)([a-z|-]+)$');
 
@@ -27,17 +28,34 @@ bitbucket.isCredsTokenInitialized()
     .then(result => {
         if (result) { return Promise.resolve(); }
 
+        console.log();
         console.log(chalk.white('Creating `.bitbucket_token` in root.'));
 
         return getBitBucketCreds().then(({ username, password }) => bitbucket.storeCreds(username, password));
     })
     .then(() => {
+        console.log();
         console.log(chalk.white('Provide information regarding the repository you\'d like to analyze.'));
 
         return getRepositoryName();
     })
+    // TODO: Add a spinner/loading bar.
     .then(({ repository, owner }) => bitbucket.getCommitsByRepo(repository, owner))
-    .then(console.log)
+    .then(result => {
+        getVelocityFormat()
+            .then(choice => {
+                console.log();
+                console.log(chalk.white(`Your ${ choice.format } commit velocity is...`));
+
+                const commit_velocity = velocity.getCommitVelocityByFormat(choice.format, result);
+
+                console.log();
+                console.log(chalk.white(`Current commits: ${ commit_velocity.current }`));
+                console.log(chalk.white(`Previous commits: ${ commit_velocity.previous }`));
+                console.log(chalk[commit_velocity.diff > 0 ? 'green' : 'red'](`Difference: ${ commit_velocity.diff }`));
+                console.log(chalk[commit_velocity.velocity > 0 ? 'green' : 'red'](`Velocity: ${ commit_velocity.velocity }%`));
+            });
+    })
     .catch(error => console.error(chalk.red(error)));
 
 // PROMPTS
@@ -70,7 +88,6 @@ function getRepositoryName() {
                 name: 'repository',
                 type: 'input',
                 message: 'Enter the slugged name of the repository:',
-                // TODO: Properly validate.
                 validate: value => value.length && slug_regex.test(value) ? true : 'Please enter a valid slug.'
             },
             {
@@ -78,6 +95,26 @@ function getRepositoryName() {
                 type: 'input',
                 message: 'Enter the owner of the repository:',
                 validate: value => value.length ? true : 'Please enter a value.'
+            }
+        ];
+
+        inquirer.prompt(questions).then(resolve);
+    });
+}
+
+function getVelocityFormat() {
+    return new Promise(resolve => {
+        const questions = [
+            {
+                type: 'list',
+                name: 'format',
+                message: 'Velocity calculation format:',
+                choices: [
+                    velocity.FORMATS.WEEKLY,
+                    velocity.FORMATS.MONTHLY,
+                    velocity.FORMATS.YEARLY
+                ],
+                default: velocity.FORMATS.WEEKLY
             }
         ];
 
