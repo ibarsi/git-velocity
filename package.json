@@ -10,7 +10,7 @@
     "start": "node index.js",
     "debug": "node --debug=12345 index.js"
   },
-  "author": "Igor Barsi",
+  "author": "ibarsi",
   "license": "ISC",
   "dependencies": {
     "async": "^2.1.4",

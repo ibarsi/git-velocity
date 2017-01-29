@@ -4,12 +4,14 @@
     INDEX
 ================================================== */
 
+const path = require('path');
 const clear = require('clear');
 const chalk = require('chalk');
 const CLI = require('clui');
 const figlet = require('figlet');
 const inquirer = require('inquirer');
 
+const file_helper = require('./lib/file_helper');
 const bitbucket = require('./lib/bitbucket');
 const velocity = require('./lib/velocity');
 
@@ -40,7 +42,7 @@ bitbucket.isCredsTokenInitialized()
         console.log();
         console.log(chalk.white('Provide information regarding the repository you\'d like to analyze.'));
 
-        return getRepositoryName();
+        return getRepositoryInfo();
     })
     .then(({ repository, owner }) => {
         const spinner = new CLI.Spinner('Pulling commits...');
@@ -94,19 +96,24 @@ function getBitBucketCreds() {
     });
 }
 
-function getRepositoryName() {
+function getRepositoryInfo() {
+    const repo_package_path = `${ process.cwd() }/package.json`;
+    const repo_package = file_helper.isFile(repo_package_path) ? require(repo_package_path) : undefined;
+
     return new Promise(resolve => {
         const questions = [
             {
                 name: 'repository',
                 type: 'input',
                 message: 'Enter the slugged name of the repository:',
+                default: path.basename(process.cwd()),
                 validate: value => value.length && slug_regex.test(value) ? true : 'Please enter a valid slug.'
             },
             {
                 name: 'owner',
                 type: 'input',
                 message: 'Enter the owner of the repository:',
+                default: repo_package && repo_package.author ? repo_package.author : '',
                 validate: value => value.length ? true : 'Please enter a value.'
             }
         ];
