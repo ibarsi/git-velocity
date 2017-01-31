@@ -12,7 +12,7 @@ const figlet = require('figlet');
 const inquirer = require('inquirer');
 
 const file_helper = require('./lib/file_helper');
-const bitbucket = require('./lib/bitbucket');
+const commits = require('./lib/commits');
 const velocity = require('./lib/velocity');
 
 const slug_regex = new RegExp('^(?!\s)([a-z|-]+)$');
@@ -29,14 +29,16 @@ console.log(
 
 // START
 
-bitbucket.isCredsTokenInitialized()
+const Commits = commits.Commits(commits.TYPES.BITBUCKET);
+
+Commits.isCredsTokenInitialized()
     .then(result => {
         if (result) { return Promise.resolve(); }
 
         console.log();
         console.log(chalk.white('Creating `.bitbucket_token` in root.'));
 
-        return getBitBucketCreds().then(({ username, password }) => bitbucket.storeCreds(username, password));
+        return getBitBucketCreds().then(({ username, password }) => Commits.storeCreds(username, password));
     })
     .then(() => {
         console.log();
@@ -49,7 +51,7 @@ bitbucket.isCredsTokenInitialized()
         spinner.start();
 
         return new Promise((resolve, reject) => {
-            bitbucket.getCommitsByRepo(repository, owner)
+            Commits.getCommitsByRepo(repository, owner)
             .then(result => { spinner.stop(); resolve(result); })
             .catch(error => { spinner.stop(); reject(error); });
         });
