@@ -15,6 +15,9 @@ const file_helper = require('./lib/file_helper');
 const commits = require('./lib/commits');
 const velocity = require('./lib/velocity');
 
+const repository_package_path = `${ process.cwd() }/package.json`;
+const repository_package = file_helper.isFile(repository_package_path) ? require(repository_package_path) : undefined;
+
 const slug_regex = new RegExp('^(?!\s)([a-z|-]+)$');
 
 // BANNER
@@ -91,7 +94,7 @@ function getRepositoryType() {
                     commits.TYPES.GITHUB,
                     commits.TYPES.BITBUCKET
                 ],
-                default: commits.TYPES.GITHUB
+                default: repository_package ? _getRepositoryTypeFromUrl(repository_package.repository) : commits.TYPES.GITHUB
             }
         ];
 
@@ -121,9 +124,6 @@ function getRepositoryCreds(type) {
 }
 
 function getRepositoryInfo() {
-    const repo_package_path = `${ process.cwd() }/package.json`;
-    const repo_package = file_helper.isFile(repo_package_path) ? require(repo_package_path) : undefined;
-
     return new Promise(resolve => {
         const questions = [
             {
@@ -137,7 +137,7 @@ function getRepositoryInfo() {
                 name: 'owner',
                 type: 'input',
                 message: 'Enter the owner of the repository:',
-                default: repo_package && repo_package.author ? repo_package.author : '',
+                default: repository_package && repository_package.author ? repository_package.author : '',
                 validate: value => value.length ? true : 'Please enter a value.'
             }
         ];
@@ -164,4 +164,19 @@ function getVelocityFormat() {
 
         inquirer.prompt(questions).then(resolve);
     });
+}
+
+// PRIVATE
+
+function _getRepositoryTypeFromUrl(repository_url) {
+    if (!repository_url) { return commits.TYPES.GITHUB; }
+
+    if (repository_url.indexOf('github') >= 0) {
+        return commits.TYPES.GITHUB;
+    }
+    else if (repository_url.indexOf('bitbucket') >= 0) {
+        return commits.TYPES.BITBUCKET;
+    }
+
+    return commits.TYPES.GITHUB;
 }
