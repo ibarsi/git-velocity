@@ -29,32 +29,35 @@ console.log(
 
 // START
 
-const Commits = commits.Commits(commits.TYPES.BITBUCKET);
+getRepositoryType()
+    .then(({ type }) => {
+        const Commits = commits.Commits(type);
 
-Commits.isCredsTokenInitialized()
-    .then(result => {
-        if (result) { return Promise.resolve(); }
+        return Commits.isCredsTokenInitialized(type)
+            .then(result => {
+                if (result) { return Promise.resolve(); }
 
-        console.log();
-        console.log(chalk.white('Creating `.bitbucket_token` in root.'));
+                console.log();
+                console.log(chalk.white('Creating auth token in root.'));
 
-        return getBitBucketCreds().then(({ username, password }) => Commits.storeCreds(username, password));
-    })
-    .then(() => {
-        console.log();
-        console.log(chalk.white('Provide information regarding the repository you\'d like to analyze.'));
+                return getRepositoryCreds(type).then(({ username, password }) => Commits.storeCreds(username, password));
+            })
+            .then(() => {
+                console.log();
+                console.log(chalk.white('Provide information regarding the repository you\'d like to analyze.'));
 
-        return getRepositoryInfo();
-    })
-    .then(({ repository, owner }) => {
-        const spinner = new CLI.Spinner('Pulling commits...');
-        spinner.start();
+                return getRepositoryInfo();
+            })
+            .then(({ repository, owner }) => {
+                const spinner = new CLI.Spinner('Pulling commits...');
+                spinner.start();
 
-        return new Promise((resolve, reject) => {
-            Commits.getCommitsByRepo(repository, owner)
-            .then(result => { spinner.stop(); resolve(result); })
-            .catch(error => { spinner.stop(); reject(error); });
-        });
+                return new Promise((resolve, reject) => {
+                    Commits.getCommitsByRepo(repository, owner)
+                        .then(result => { spinner.stop(); resolve(result); })
+                        .catch(error => { spinner.stop(); reject(error); });
+                });
+            });
     })
     .then(result => {
         getVelocityFormat()
@@ -77,19 +80,38 @@ Commits.isCredsTokenInitialized()
 
 // PROMPTS
 
-function getBitBucketCreds() {
+function getRepositoryType() {
+    return new Promise(resolve => {
+        const questions = [
+            {
+                type: 'list',
+                name: 'type',
+                message: 'Select repository type:',
+                choices: [
+                    commits.TYPES.GITHUB,
+                    commits.TYPES.BITBUCKET
+                ],
+                default: commits.TYPES.GITHUB
+            }
+        ];
+
+        inquirer.prompt(questions).then(resolve);
+    });
+}
+
+function getRepositoryCreds(type) {
     return new Promise(resolve => {
         const questions = [
             {
                 name: 'username',
                 type: 'input',
-                message: 'Enter BitBucket username:',
+                message: `Enter ${ type } username:`,
                 validate: value => value.length ? true : 'Please enter a value.'
             },
             {
                 name: 'password',
                 type: 'password',
-                message: 'Enter password:',
+                message: `Enter ${ type } password:`,
                 validate: value => value.length ? true : 'Please enter a value.'
             }
         ];
