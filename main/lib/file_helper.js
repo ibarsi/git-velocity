@@ -2,11 +2,11 @@
     FILE HELPER
 ================================================== */
 
-const fs = require('fs');
+import fs from 'fs';
 
 // PUBLIC
 
-function isFile(path) {
+export function isFile(path) {
     try {
         return fs.statSync(path).isFile();
     }
@@ -15,6 +15,6 @@ function isFile(path) {
     }
 }
 
-module.exports = {
+export default {
     isFile
 };

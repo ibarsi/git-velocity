@@ -2,25 +2,29 @@
     COMMITS
 ================================================== */
 
-const fs = require('fs');
-const request = require('request').defaults({
+import fs from 'fs';
+import req from 'request';
+
+import { isFile } from './file_helper';
+
+const request = req.defaults({
     encoding: 'utf8',
     json: true
 });
 
-const file_helper = require('./file_helper');
+// PUBLIC
 
-const TYPES = {
+export const TYPES = {
     GITHUB: 'GITHUB',
     BITBUCKET: 'BITBUCKET'
 };
 
-function Commits(type = TYPES.GITHUB) {
+export function Commits(type = TYPES.GITHUB) {
     const config = _initCommitProps(type);
 
     return {
         isCredsTokenInitialized() {
-            return new Promise(resolve => resolve(file_helper.isFile(`${ process.env.HOME }/${ config.token }`)));
+            return new Promise(resolve => resolve(isFile(`${ process.env.HOME }/${ config.token }`)));
         },
         storeCreds(username, password) {
             return new Promise((resolve, reject) => {
@@ -79,6 +83,13 @@ function Commits(type = TYPES.GITHUB) {
     };
 }
 
+export default {
+    TYPES,
+    Commits
+};
+
+// PRIVATE
+
 function BitBucketCommit(value) {
     return {
         date: value.date
@@ -90,8 +101,6 @@ function GitHubCommit(value) {
         date: value.commit.committer.date
     };
 }
-
-// PRIVATE
 
 function _initCommitProps(type) {
     switch (type) {
@@ -122,8 +131,3 @@ function _getCreds(token) {
         }
     });
 }
-
-module.exports = {
-    TYPES,
-    Commits
-};

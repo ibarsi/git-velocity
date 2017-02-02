@@ -2,26 +2,17 @@
     VELOCITY
 ================================================== */
 
-const moment = require('moment');
+import moment from 'moment';
 
-const FORMATS = {
+// PUBLIC
+
+export const FORMATS = {
     WEEKLY: 'WEEKLY',
     MONTHLY: 'MONTHLY',
     YEARLY: 'YEARLY'
 };
 
-function Velocity(current, previous) {
-    return {
-        current,
-        previous,
-        diff: current - previous,
-        velocity: (previous <= 0 ? current : current / previous) * 100
-    };
-}
-
-// PUBLIC
-
-function getCommitVelocityByFormat(format, commits) {
+export function getCommitVelocityByFormat(format, commits) {
     switch (format) {
         case FORMATS.WEEKLY:
             return _getCommitVelocityOverTime(commits, 'isoWeek');
@@ -34,7 +25,21 @@ function getCommitVelocityByFormat(format, commits) {
     }
 }
 
+export default {
+    FORMATS,
+    getCommitVelocityByFormat
+};
+
 // PRIVATE
+
+function Velocity(current, previous) {
+    return {
+        current,
+        previous,
+        diff: current - previous,
+        velocity: (previous <= 0 ? current : current / previous) * 100
+    };
+}
 
 function _getCommitVelocityOverTime(commits, time) {
     const start_of_week = moment().startOf(time).hours(0);
@@ -45,8 +50,3 @@ function _getCommitVelocityOverTime(commits, time) {
 
     return Velocity(commits_this_week.length, commits_last_week.length);
 }
-
-module.exports = {
-    FORMATS,
-    getCommitVelocityByFormat
-};

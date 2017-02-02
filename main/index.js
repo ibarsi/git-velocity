@@ -4,19 +4,19 @@
     INDEX
 ================================================== */
 
-const path = require('path');
-const clear = require('clear');
-const chalk = require('chalk');
-const CLI = require('clui');
-const figlet = require('figlet');
-const inquirer = require('inquirer');
+import path from 'path';
+import clear from 'clear';
+import chalk from 'chalk';
+import CLI from 'clui';
+import figlet from 'figlet';
+import inquirer from 'inquirer';
 
-const file_helper = require('./lib/file_helper');
-const commits = require('./lib/commits');
-const velocity = require('./lib/velocity');
+import { isFile } from './lib/file_helper';
+import { TYPES, Commits } from './lib/commits';
+import { FORMATS, getCommitVelocityByFormat } from './lib/velocity';
 
 const repository_package_path = `${ process.cwd() }/package.json`;
-const repository_package = file_helper.isFile(repository_package_path) ? require(repository_package_path) : undefined;
+const repository_package = isFile(repository_package_path) ? require(repository_package_path) : undefined;
 
 const slug_regex = new RegExp('^(?!\s)([a-z|-]+)$');
 
@@ -34,16 +34,16 @@ console.log(
 
 getRepositoryType()
     .then(({ type }) => {
-        const Commits = commits.Commits(type);
+        const commits = Commits(type);
 
-        return Commits.isCredsTokenInitialized(type)
+        return commits.isCredsTokenInitialized(type)
             .then(result => {
                 if (result) { return Promise.resolve(); }
 
                 console.log();
                 console.log(chalk.white('Creating auth token in root.'));
 
-                return getRepositoryCreds(type).then(({ username, password }) => Commits.storeCreds(username, password));
+                return getRepositoryCreds(type).then(({ username, password }) => commits.storeCreds(username, password));
             })
             .then(() => {
                 console.log();
@@ -56,7 +56,7 @@ getRepositoryType()
                 spinner.start();
 
                 return new Promise((resolve, reject) => {
-                    Commits.getCommitsByRepo(repository, owner)
+                    commits.getCommitsByRepo(repository, owner)
                         .then(result => { spinner.stop(); resolve(result); })
                         .catch(error => { spinner.stop(); reject(error); });
                 });
@@ -68,7 +68,7 @@ getRepositoryType()
                 console.log();
                 console.log(chalk.white(`Your ${ choice.format } commit velocity is...`));
 
-                const commit_velocity = velocity.getCommitVelocityByFormat(choice.format, result);
+                const commit_velocity = getCommitVelocityByFormat(choice.format, result);
 
                 console.log();
                 console.log(chalk.white(`Current commits: ${ commit_velocity.current }`));
@@ -91,10 +91,10 @@ function getRepositoryType() {
                 name: 'type',
                 message: 'Select repository type:',
                 choices: [
-                    commits.TYPES.GITHUB,
-                    commits.TYPES.BITBUCKET
+                    TYPES.GITHUB,
+                    TYPES.BITBUCKET
                 ],
-                default: repository_package ? _getRepositoryTypeFromUrl(repository_package.repository) : commits.TYPES.GITHUB
+                default: repository_package ? _getRepositoryTypeFromUrl(repository_package.repository) : TYPES.GITHUB
             }
         ];
 
@@ -154,11 +154,11 @@ function getVelocityFormat() {
                 name: 'format',
                 message: 'Velocity calculation format:',
                 choices: [
-                    velocity.FORMATS.WEEKLY,
-                    velocity.FORMATS.MONTHLY,
-                    velocity.FORMATS.YEARLY
+                    FORMATS.WEEKLY,
+                    FORMATS.MONTHLY,
+                    FORMATS.YEARLY
                 ],
-                default: velocity.FORMATS.WEEKLY
+                default: FORMATS.WEEKLY
             }
         ];
 
@@ -169,14 +169,14 @@ function getVelocityFormat() {
 // PRIVATE
 
 function _getRepositoryTypeFromUrl(repository_url) {
-    if (!repository_url) { return commits.TYPES.GITHUB; }
+    if (!repository_url) { return TYPES.GITHUB; }
 
     if (repository_url.indexOf('github') >= 0) {
-        return commits.TYPES.GITHUB;
+        return TYPES.GITHUB;
     }
     else if (repository_url.indexOf('bitbucket') >= 0) {
-        return commits.TYPES.BITBUCKET;
+        return TYPES.BITBUCKET;
     }
 
-    return commits.TYPES.GITHUB;
+    return TYPES.GITHUB;
 }

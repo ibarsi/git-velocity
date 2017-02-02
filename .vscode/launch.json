@@ -5,10 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node",
+            "name": "Attach",
+            "type": "node2",
             "request": "attach",
-            "name": "Attach to Process",
-            "port": 12345
+            "port": 12345,
+            "address": "localhost",
+            "restart": false,
+            "sourceMaps": true,
+            "outFiles": [],
+            "localRoot": "${workspaceRoot}",
+            "remoteRoot": null
         }
     ]
 }
