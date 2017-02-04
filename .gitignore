@@ -3,6 +3,7 @@
 
 # Static files
 **/node_modules
+**/dist
 
 # Node
 **/npm-debug.log

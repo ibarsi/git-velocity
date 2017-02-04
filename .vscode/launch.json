@@ -5,16 +5,25 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Attach",
-            "type": "node2",
-            "request": "attach",
+            "type": "node",
+            "request": "launch",
+            "name": "Launch via NPM",
+            "runtimeExecutable": "npm",
+            "windows": {
+                "runtimeExecutable": "npm.cmd"
+            },
+            "runtimeArgs": [
+                "run-script",
+                "debug"
+            ],
+            "console": "integratedTerminal",
             "port": 12345,
-            "address": "localhost",
-            "restart": false,
+            "cwd": "${workspaceRoot}",
             "sourceMaps": true,
-            "outFiles": [],
-            "localRoot": "${workspaceRoot}",
-            "remoteRoot": null
+            "outFiles": [
+                "${workspaceRoot}/dist/**/*.js"
+            ],
+            "restart": true
         }
     ]
 }

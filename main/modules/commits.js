@@ -5,7 +5,7 @@
 import fs from 'fs';
 import req from 'request';
 
-import { isFile } from './file_helper';
+import { isFile } from './helpers';
 
 const request = req.defaults({
     encoding: 'utf8',

@@ -11,9 +11,10 @@ import CLI from 'clui';
 import figlet from 'figlet';
 import inquirer from 'inquirer';
 
-import { isFile } from './lib/file_helper';
-import { TYPES, Commits } from './lib/commits';
-import { FORMATS, getCommitVelocityByFormat } from './lib/velocity';
+import { isFile } from './modules/helpers';
+import { TYPES, Commits } from './modules/commits';
+import { FORMATS, getCommitVelocityByFormat } from './modules/velocity';
+import CommitsDashboard from './modules/dashboard';
 
 const repository_package_path = `${ process.cwd() }/package.json`;
 const repository_package = isFile(repository_package_path) ? require(repository_package_path) : undefined;
@@ -68,15 +69,12 @@ getRepositoryType()
                 console.log();
                 console.log(chalk.white(`Your ${ choice.format } commit velocity is...`));
 
-                const commit_velocity = getCommitVelocityByFormat(choice.format, result);
+                // const commit_velocity = getCommitVelocityByFormat(choice.format, result);
 
-                console.log();
-                console.log(chalk.white(`Current commits: ${ commit_velocity.current }`));
-                console.log(chalk.white(`Previous commits: ${ commit_velocity.previous }`));
-                console.log(chalk[commit_velocity.diff > 0 ? 'green' : 'red'](
-                    `Difference: ${ commit_velocity.diff > 0 ? '+' : '' }${ commit_velocity.diff }`
-                ));
-                console.log(chalk[commit_velocity.velocity > 0 ? 'green' : 'red'](`Velocity: ${ commit_velocity.velocity }%`));
+                // TODO: Implement dashboard with real data.
+                const dashboard = CommitsDashboard();
+                dashboard.setData();
+                dashboard.render();
             });
     })
     .catch(error => console.error(chalk.red(error)));
