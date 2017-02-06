@@ -5,7 +5,7 @@
 import fs from 'fs';
 import req from 'request';
 
-import { isFile } from './helpers';
+import { isFile, async } from './helpers';
 
 const request = req.defaults({
     encoding: 'utf8',
@@ -39,45 +39,42 @@ export function Commits(type = TYPES.GITHUB) {
             return new Promise((resolve, reject) => {
                 const url = config.url.replace('{owner}', owner).replace('{repo}', repository);
 
-                _getCreds(config.token)
-                    .then(({ username, password }) => {
-                        return new Promise((inner_resolve, inner_reject) => {
-                            request.get(url, {
-                                    headers: {
-                                        'User-Agent': owner,
-                                        Authorization: 'Basic ' + new Buffer(`${ username }:${ password }`).toString('base64')
+                async(function* () {
+                    const { username, password } = yield _getCreds(config.token);
+
+                    request.get(url, {
+                            headers: {
+                                'User-Agent': owner,
+                                Authorization: 'Basic ' + new Buffer(`${ username }:${ password }`).toString('base64')
+                            }
+                        })
+                        .on('response', response => {
+                            if (response.statusCode !== 200) { reject(new Error(response.statusMessage)); }
+
+                            let chunk = '';
+
+                            response.on('data', result => { chunk += result; });
+
+                            response.on('end', () => {
+                                try {
+                                    switch (type) {
+                                        case TYPES.GITHUB:
+                                            resolve(JSON.parse(chunk).map(GitHubCommit));
+                                            break;
+                                        case TYPES.BITBUCKET:
+                                            resolve(JSON.parse(chunk).values.map(BitBucketCommit));
+                                            break;
+                                        default:
+                                            resolve([]);
+                                            break;
                                     }
-                                })
-                                .on('response', response => {
-                                    if (response.statusCode !== 200) { inner_reject(new Error(response.statusMessage)); }
-
-                                    let chunk = '';
-
-                                    response.on('data', result => { chunk += result; });
-
-                                    response.on('end', () => {
-                                        try {
-                                            switch (type) {
-                                                case TYPES.GITHUB:
-                                                    inner_resolve(JSON.parse(chunk).map(GitHubCommit));
-                                                    break;
-                                                case TYPES.BITBUCKET:
-                                                    inner_resolve(JSON.parse(chunk).values.map(BitBucketCommit));
-                                                    break;
-                                                default:
-                                                    inner_resolve([]);
-                                                    break;
-                                            }
-                                        }
-                                        catch (error) {
-                                            inner_reject(error);
-                                        }
-                                    });
-                                });
+                                }
+                                catch (error) {
+                                    reject(error);
+                                }
+                            });
                         });
-                    })
-                    .then(resolve)
-                    .catch(reject);
+                });
             });
         }
     };

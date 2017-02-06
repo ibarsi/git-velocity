@@ -4,6 +4,7 @@
     INDEX
 ================================================== */
 
+import 'babel-polyfill';
 import path from 'path';
 import clear from 'clear';
 import chalk from 'chalk';
@@ -11,7 +12,7 @@ import CLI from 'clui';
 import figlet from 'figlet';
 import inquirer from 'inquirer';
 
-import { isFile } from './modules/helpers';
+import { isFile, async } from './modules/helpers';
 import { TYPES, Commits } from './modules/commits';
 import { FORMATS, getCommitVelocityByFormat } from './modules/velocity';
 import CommitsDashboard from './modules/dashboard';
@@ -33,51 +34,50 @@ console.log(
 
 // START
 
-getRepositoryType()
-    .then(({ type }) => {
+async(function* () {
+    try {
+        const { type } = yield getRepositoryType();
         const commits = Commits(type);
 
-        return commits.isCredsTokenInitialized(type)
-            .then(result => {
-                if (result) { return Promise.resolve(); }
+        const isTokenInitialized = yield commits.isCredsTokenInitialized(type);
 
-                console.log();
-                console.log(chalk.white('Creating auth token in root.'));
+        if (!isTokenInitialized) {
+            console.log();
+            console.log(chalk.white('Creating auth token in root.'));
 
-                return getRepositoryCreds(type).then(({ username, password }) => commits.storeCreds(username, password));
-            })
-            .then(() => {
-                console.log();
-                console.log(chalk.white('Provide information regarding the repository you\'d like to analyze.'));
+            yield getRepositoryCreds(type).then(({ username, password }) => commits.storeCreds(username, password));
+        }
 
-                return getRepositoryInfo();
-            })
-            .then(({ repository, owner }) => {
-                const spinner = new CLI.Spinner('Pulling commits...');
-                spinner.start();
+        console.log();
+        console.log(chalk.white('Provide information regarding the repository you\'d like to analyze.'));
 
-                return new Promise((resolve, reject) => {
-                    commits.getCommitsByRepo(repository, owner)
-                        .then(result => { spinner.stop(); resolve(result); })
-                        .catch(error => { spinner.stop(); reject(error); });
-                });
-            });
-    })
-    .then(result => {
-        getVelocityFormat()
-            .then(choice => {
-                console.log();
-                console.log(chalk.white(`Your ${ choice.format } commit velocity is...`));
+        const { repository, owner } = yield getRepositoryInfo();
 
-                // const commit_velocity = getCommitVelocityByFormat(choice.format, result);
+        const spinner = new CLI.Spinner('Pulling commits...');
+        spinner.start();
 
-                // TODO: Implement dashboard with real data.
-                const dashboard = CommitsDashboard();
-                dashboard.setData();
-                dashboard.render();
-            });
-    })
-    .catch(error => console.error(chalk.red(error)));
+        const data = yield new Promise((resolve, reject) => {
+            commits.getCommitsByRepo(repository, owner)
+                .then(result => { spinner.stop(); resolve(result); })
+                .catch(error => { spinner.stop(); reject(error); });
+        });
+
+        const choice = yield getVelocityFormat();
+
+        console.log();
+        console.log(chalk.white(`Your ${ choice.format } commit velocity is...`));
+
+        // const commit_velocity = getCommitVelocityByFormat(choice.format, data);
+
+        // TODO: Implement dashboard with real data.
+        const dashboard = CommitsDashboard();
+        dashboard.setData();
+        dashboard.render();
+    }
+    catch (error) {
+        console.error(chalk.red(error));
+    }
+});
 
 // PROMPTS
 
