@@ -8,11 +8,10 @@ import 'babel-polyfill';
 import path from 'path';
 import clear from 'clear';
 import chalk from 'chalk';
-import CLI from 'clui';
 import figlet from 'figlet';
 import inquirer from 'inquirer';
 
-import { isFile, async } from './modules/helpers';
+import { isFile, wrapSpinner, async } from './modules/helpers';
 import { TYPES, Commits } from './modules/commits';
 import { FORMATS, getCommitVelocityByFormat } from './modules/velocity';
 import CommitsDashboard from './modules/dashboard';
@@ -39,13 +38,15 @@ async(function* () {
         const { type } = yield getRepositoryType();
         const commits = Commits(type);
 
-        const isTokenInitialized = yield commits.isCredsTokenInitialized(type);
+        const isTokenInitialized = yield commits.isCredsTokenInitialized();
 
         if (!isTokenInitialized) {
             console.log();
             console.log(chalk.white('Creating auth token in root.'));
 
-            yield getRepositoryCreds(type).then(({ username, password }) => commits.storeCreds(username, password));
+            const { username, password } = yield getRepositoryCreds(type);
+
+            commits.storeCreds(username, password);
         }
 
         console.log();
@@ -53,14 +54,7 @@ async(function* () {
 
         const { repository, owner } = yield getRepositoryInfo();
 
-        const spinner = new CLI.Spinner('Pulling commits...');
-        spinner.start();
-
-        const data = yield new Promise((resolve, reject) => {
-            commits.getCommitsByRepo(repository, owner)
-                .then(result => { spinner.stop(); resolve(result); })
-                .catch(error => { spinner.stop(); reject(error); });
-        });
+        const data = yield wrapSpinner(commits.getCommitsByRepo, 'Pulling commits...')(repository, owner);
 
         const choice = yield getVelocityFormat();
 

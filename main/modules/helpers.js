@@ -3,6 +3,7 @@
 ================================================== */
 
 import fs from 'fs';
+import CLI from 'clui';
 
 // PUBLIC
 
@@ -13,6 +14,17 @@ export function isFile(path) {
     catch (error) {
         return false;
     }
+}
+
+export function wrapSpinner(promise, message = '') {
+    const spinner = new CLI.Spinner(message);
+    spinner.start();
+
+    return (...args) => new Promise((resolve, reject) => {
+        promise(...args)
+            .then(result => { spinner.stop(); resolve(result); })
+            .catch(error => { spinner.stop(); reject(error); });
+    });
 }
 
 // SOURCE: https://gist.github.com/ChrisChares/1ed079b9a6c9877ba4b43424139b166d
@@ -29,5 +41,6 @@ export function async(gen, context = undefined) {
 
 export default {
     isFile,
+    wrapSpinner,
     async
 };
