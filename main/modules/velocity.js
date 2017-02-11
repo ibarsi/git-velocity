@@ -4,49 +4,67 @@
 
 import moment from 'moment';
 
+import { partial } from './helpers';
+
 // PUBLIC
 
 export const FORMATS = {
-    WEEKLY: 'WEEKLY',
-    MONTHLY: 'MONTHLY',
-    YEARLY: 'YEARLY'
+    WEEK: 'WEEK',
+    MONTH: 'MONTH'
 };
 
-export function getCommitVelocityByFormat(format, commits) {
+export function Velocity(format) {
+    return {
+        groupCommitsByFormat: partial(_groupCommitsByFormat, format),
+        groupCommitsByDay: partial(_groupCommitsByDay, format)
+    };
+}
+
+export default {
+    FORMATS,
+    Velocity
+};
+
+// PRIVATE
+
+function _groupCommitsByFormat(format, commits) {
     switch (format) {
-        case FORMATS.WEEKLY:
-            return _getCommitVelocityOverTime(commits, 'isoWeek');
-        case FORMATS.MONTHLY:
-            return _getCommitVelocityOverTime(commits, 'month');
-        case FORMATS.YEARLY:
-            return _getCommitVelocityOverTime(commits, 'year');
+        case FORMATS.WEEK:
+            return _groupCommitsByTime('week', commits);
+        case FORMATS.MONTH:
+            return _groupCommitsByTime('month', commits);
         default:
             return undefined;
     }
 }
 
-export default {
-    FORMATS,
-    getCommitVelocityByFormat
-};
+function _groupCommitsByTime(time, commits) {
+    const start_of_time = moment().startOf(time).hours(0);
+    const start_of_last_time = moment(start_of_time).subtract(1, `${ time }s`);
 
-// PRIVATE
+    const commits_this_time = commits.filter(commit => start_of_time.isBefore(commit.date));
+    const commits_last_time = commits.filter(commit => start_of_last_time.isBefore(commit.date) && start_of_time.isAfter(commit.date));
 
-function Velocity(current, previous) {
     return {
-        current,
-        previous,
-        diff: current - previous,
-        velocity: (previous <= 0 ? current : current / previous) * 100
+        current: commits_this_time,
+        previous: commits_last_time
     };
 }
 
-function _getCommitVelocityOverTime(commits, time) {
-    const start_of_week = moment().startOf(time).hours(0);
-    const start_of_last_week = moment(start_of_week).subtract(1, `${ time }s`);
+function _groupCommitsByDay(format, commits) {
+    const days_of_week = [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ];
 
-    const commits_this_week = commits.filter(commit => start_of_week.isBefore(commit.date));
-    const commits_last_week = commits.filter(commit => start_of_last_week.isBefore(commit.date) && start_of_week.isAfter(commit.date));
+    switch (format) {
+        case FORMATS.WEEK:
+            return days_of_week.reduce((group, day) => {
+                group[day] = commits.filter(commit => moment(commit.date).format('ddd') === day);
 
-    return Velocity(commits_this_week.length, commits_last_week.length);
+                return group;
+            }, {});
+        case FORMATS.MONTH:
+            // TODO
+            return {};
+        default:
+            return {};
+    }
 }

@@ -1,14 +1,16 @@
 import { screen } from 'blessed';
 import { grid, markdown, log, line } from 'blessed-contrib';
 
+import { Velocity } from './velocity';
+
 // SETTINGS
 
 const info_content =
 `# GIT VELOCITY
 Welcome to the \`git-velocity\` dashboard!
 
-Current Commits: {previous_commits}
-Previous Commits: {current_commits}
+Current Commits: *{{current_commits}}*
+Previous Commits: *{{previous_commits}}*
 
 Press \`Esc\` or \`Ctrl/Cmd-C\` to quit.`;
 
@@ -34,11 +36,69 @@ const line_settings = {
 // PUBLIC
 
 export default function CommitsDashboard() {
+    let dashboard;
+    let layout;
+
+    return {
+        render(format, commits) {
+            if (!dashboard) {
+                dashboard = _initScreen();
+                layout = _initLayout(dashboard);
+            }
+
+            const velocity = Velocity(format);
+            const grouped_commits = velocity.groupCommitsByFormat(commits);
+
+            // INFO
+
+            const info_content_formatted = info_content
+                .replace('{{current_commits}}', grouped_commits.current.length)
+                .replace('{{previous_commits}}', grouped_commits.previous.length);
+
+            // LISTING
+            const commit_messages = commits.map(commit => `${ commit.author }: ${ commit.message }`).reverse();
+
+            const previous_daily_commits = velocity.groupCommitsByDay(grouped_commits.previous);
+            const previous_days = Object.keys(previous_daily_commits);
+
+            const previous_commits = {
+                title: 'Previous',
+                x: previous_days,
+                y: previous_days.map(day => previous_daily_commits[day].length),
+                style: {
+                    line: 'red'
+                }
+            };
+
+            const current_daily_commits = velocity.groupCommitsByDay(grouped_commits.current);
+            const current_days = Object.keys(current_daily_commits);
+
+            const current_commits = {
+                title: 'Current',
+                x: current_days,
+                y: current_days.map(day => current_daily_commits[day].length),
+                style: {
+                    line: 'green'
+                }
+            };
+
+            layout.info.setMarkdown(info_content_formatted);
+            layout.velocity.setData([ current_commits, previous_commits ]);
+            commit_messages.forEach(message => layout.listing.log(message));
+        }
+    };
+}
+
+// PRIVATE
+
+function _initScreen() {
     const dashboard = screen();
     dashboard.key([ 'escape', 'C-c' ], () => process.exit(0));
 
-    // LAYOUT
+    return dashboard;
+}
 
+function _initLayout(dashboard) {
     const layout = new grid({ rows: 12, cols: 12, screen: dashboard });
 
     // layout.set(row, col, rowSpan, colSpan, obj, opts)
@@ -47,40 +107,8 @@ export default function CommitsDashboard() {
     const velocity = layout.set(4, 0, 8, 12, line, line_settings);
 
     return {
-        // TODO: Get/set data through params.
-        setData() {
-            // DATA
-
-            const days = [ 'Mon', 'Tues', 'Wen', 'Thurs', 'Fri', 'Sat', 'Sun' ];
-
-            const previous_commits = {
-                title: 'Previous',
-                x: days,
-                y: [ 5, 1, 7, 5, 3, 10, 15 ],
-                style: {
-                    line: 'red'
-                }
-            };
-
-            const current_commits = {
-                title: 'Current',
-                x: days,
-                y: [ 2, 1, 4, 8, 3, 12, 6 ],
-                style: {
-                    line: 'green'
-                }
-            };
-
-            const commit_messages = [
-                'Igor Barsi: [CPA-98] - Removed un-used styles.'
-            ];
-
-            info.setMarkdown(info_content);
-            velocity.setData([ current_commits, previous_commits ]);
-            commit_messages.forEach(message => listing.log(message));
-        },
-        render() {
-            dashboard.render();
-        }
+        info,
+        listing,
+        velocity
     };
 }

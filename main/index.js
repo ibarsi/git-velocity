@@ -12,8 +12,8 @@ import figlet from 'figlet';
 import inquirer from 'inquirer';
 
 import { isFile, wrapSpinner, async } from './modules/helpers';
-import { TYPES, Commits } from './modules/commits';
-import { FORMATS, getCommitVelocityByFormat } from './modules/velocity';
+import { TYPES, Commits, getRepositoryTypeFromUrl } from './modules/commits';
+import { FORMATS } from './modules/velocity';
 import CommitsDashboard from './modules/dashboard';
 
 const repository_package_path = `${ process.cwd() }/package.json`;
@@ -53,20 +53,11 @@ async(function* () {
         console.log(chalk.white('Provide information regarding the repository you\'d like to analyze.'));
 
         const { repository, owner } = yield getRepositoryInfo();
-
         const data = yield wrapSpinner(commits.getCommitsByRepo, 'Pulling commits...')(repository, owner);
+        const { format } = yield getVelocityFormat();
 
-        const choice = yield getVelocityFormat();
-
-        console.log();
-        console.log(chalk.white(`Your ${ choice.format } commit velocity is...`));
-
-        // const commit_velocity = getCommitVelocityByFormat(choice.format, data);
-
-        // TODO: Implement dashboard with real data.
         const dashboard = CommitsDashboard();
-        dashboard.setData();
-        dashboard.render();
+        dashboard.render(format, data);
     }
     catch (error) {
         console.error(chalk.red(error));
@@ -86,7 +77,7 @@ function getRepositoryType() {
                     TYPES.GITHUB,
                     TYPES.BITBUCKET
                 ],
-                default: repository_package ? _getRepositoryTypeFromUrl(repository_package.repository) : TYPES.GITHUB
+                default: repository_package ? getRepositoryTypeFromUrl(repository_package.repository) : TYPES.GITHUB
             }
         ];
 
@@ -146,29 +137,13 @@ function getVelocityFormat() {
                 name: 'format',
                 message: 'Velocity calculation format:',
                 choices: [
-                    FORMATS.WEEKLY,
-                    FORMATS.MONTHLY,
-                    FORMATS.YEARLY
+                    FORMATS.WEEK,
+                    FORMATS.MONTH
                 ],
-                default: FORMATS.WEEKLY
+                default: FORMATS.WEEK
             }
         ];
 
         inquirer.prompt(questions).then(resolve);
     });
-}
-
-// PRIVATE
-
-function _getRepositoryTypeFromUrl(repository_url) {
-    if (!repository_url) { return TYPES.GITHUB; }
-
-    if (repository_url.indexOf('github') >= 0) {
-        return TYPES.GITHUB;
-    }
-    else if (repository_url.indexOf('bitbucket') >= 0) {
-        return TYPES.BITBUCKET;
-    }
-
-    return TYPES.GITHUB;
 }

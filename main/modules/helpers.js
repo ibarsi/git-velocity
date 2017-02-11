@@ -3,7 +3,13 @@
 ================================================== */
 
 import fs from 'fs';
+import req from 'request';
 import CLI from 'clui';
+
+const request = req.defaults({
+    encoding: 'utf8',
+    json: true
+});
 
 // PUBLIC
 
@@ -27,6 +33,28 @@ export function wrapSpinner(promise, message = '') {
     });
 }
 
+export function requestPromise(url, config) {
+    return new Promise((resolve, reject) => {
+        request.get(url, config)
+            .on('response', response => {
+                if (response.statusCode !== 200) { reject(new Error(response.statusMessage)); }
+
+                let chunk = '';
+
+                response.on('data', result => { chunk += result; });
+
+                response.on('end', () => {
+                    resolve(chunk);
+                });
+            });
+    });
+}
+
+// SOURCE: https://gist.github.com/ibarsi/856a0c46e37fb4c951b033995aec55d5
+export function partial(func, ...args) {
+    return (...inner_args) => func(...args, ...inner_args);
+}
+
 // SOURCE: https://gist.github.com/ChrisChares/1ed079b9a6c9877ba4b43424139b166d
 export function async(gen, context = undefined) {
     const generator = typeof gen === 'function' ? gen() : gen;
@@ -42,5 +70,6 @@ export function async(gen, context = undefined) {
 export default {
     isFile,
     wrapSpinner,
+    partial,
     async
 };
