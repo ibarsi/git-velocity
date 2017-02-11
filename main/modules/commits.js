@@ -37,21 +37,22 @@ export function Commits(type = TYPES.GITHUB) {
 
                         const { username, password } = yield _getCreds(config.token);
 
-                        const request_config = {
-                            headers: {
-                                'User-Agent': owner,
-                                Authorization: 'Basic ' + new Buffer(`${ username }:${ password }`).toString('base64')
+                        const options = {
+                            url,
+                            config: {
+                                headers: {
+                                    'User-Agent': owner,
+                                    Authorization: 'Basic ' + new Buffer(`${ username }:${ password }`).toString('base64')
+                                }
                             }
                         };
 
-                        const data = yield _requestFullResponse(url, request_config);
-
                         switch (type) {
                             case TYPES.GITHUB:
-                                resolve(data.map(GitHubCommit));
+                                resolve(yield _requestFullResponse((result) => result.map(GitHubCommit), options));
                                 break;
                             case TYPES.BITBUCKET:
-                                resolve(data.map(BitBucketCommit));
+                                resolve(yield _requestFullResponse((result) => result.values.map(BitBucketCommit), options));
                                 break;
                             default:
                                 resolve([]);
@@ -134,15 +135,16 @@ function _getCreds(token) {
     });
 }
 
-function _requestFullResponse(url, request_config, values = []) {
+function _requestFullResponse(func, options, values = []) {
     return new Promise((resolve, reject) => {
         async(function* () {
             try {
-                const result = JSON.parse(yield requestPromise(url, request_config));
-                const chunked_values = values.concat(result.values);
+                const { url, config } = options;
+                const result = JSON.parse(yield requestPromise(url, config));
+                const chunked_values = values.concat(func(result));
 
                 if (result.next) {
-                    resolve(_requestFullResponse(result.next, request_config, chunked_values));
+                    resolve(_requestFullResponse(func, { url: result.next, config }, chunked_values));
                 }
 
                 resolve(chunked_values);

@@ -39,10 +39,11 @@ function _groupCommitsByFormat(format, commits) {
 }
 
 function _groupCommitsByTime(time, commits) {
-    const start_of_time = moment().startOf(time).hours(0);
+    const now = moment();
+    const start_of_time = moment(now).startOf(time).hours(0);
     const start_of_last_time = moment(start_of_time).subtract(1, `${ time }s`);
 
-    const commits_this_time = commits.filter(commit => start_of_time.isBefore(commit.date));
+    const commits_this_time = commits.filter(commit => start_of_time.isBefore(commit.date) && now.isAfter(commit.date));
     const commits_last_time = commits.filter(commit => start_of_last_time.isBefore(commit.date) && start_of_time.isAfter(commit.date));
 
     return {
@@ -52,7 +53,8 @@ function _groupCommitsByTime(time, commits) {
 }
 
 function _groupCommitsByDay(format, commits) {
-    const days_of_week = [ 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ];
+    const days_of_week = [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ];
+    const days_of_month = [ ...Array(31).keys() ].map(i => ++i);
 
     switch (format) {
         case FORMATS.WEEK:
@@ -62,8 +64,11 @@ function _groupCommitsByDay(format, commits) {
                 return group;
             }, {});
         case FORMATS.MONTH:
-            // TODO
-            return {};
+            return days_of_month.reduce((group, day) => {
+                group[day] = commits.filter(commit => moment(commit.date).date() === day);
+
+                return group;
+            }, {});
         default:
             return {};
     }
