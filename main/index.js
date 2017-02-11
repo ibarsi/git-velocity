@@ -19,7 +19,7 @@ import CommitsDashboard from './modules/dashboard';
 const repository_package_path = `${ process.cwd() }/package.json`;
 const repository_package = isFile(repository_package_path) ? require(repository_package_path) : undefined;
 
-const slug_regex = new RegExp('^(?!\s)([a-z|-]+)$');
+const slug_regex = new RegExp('^(?!\s)([a-z0-9|-]+)$');
 
 // BANNER
 
