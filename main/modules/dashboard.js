@@ -1,6 +1,7 @@
 import { screen } from 'blessed';
 import { grid, markdown, log, line } from 'blessed-contrib';
 
+import { async } from './helpers';
 import { Velocity } from './velocity';
 
 // SETTINGS
@@ -41,50 +42,61 @@ export default function CommitsDashboard() {
 
     return {
         render(format, commits) {
-            if (!dashboard) {
-                dashboard = _initScreen();
-                layout = _initLayout(dashboard);
-            }
+            return new Promise((resolve, reject) => {
+                async(function* () {
+                    try {
+                        if (!dashboard) {
+                            dashboard = _initScreen();
+                            layout = _initLayout(dashboard);
+                        }
 
-            const velocity = Velocity(format);
-            const grouped_commits = velocity.groupCommitsByFormat(commits);
+                        const velocity = Velocity(format);
+                        const grouped_commits = yield velocity.groupCommitsByFormat(commits);
 
-            // INFO
+                        // INFO
 
-            const info_content_formatted = info_content
-                .replace('{{current_commits}}', grouped_commits.current.length)
-                .replace('{{previous_commits}}', grouped_commits.previous.length);
+                        const info_content_formatted = info_content
+                            .replace('{{current_commits}}', grouped_commits.current.length)
+                            .replace('{{previous_commits}}', grouped_commits.previous.length);
 
-            // LISTING
-            const commit_messages = commits.map(commit => `${ commit.author }: ${ commit.message }`).reverse();
+                        // LISTING
+                        const commit_messages = commits.map(commit => `${ commit.author }: ${ commit.message }`).reverse();
 
-            const previous_daily_commits = velocity.groupCommitsByDay(grouped_commits.previous);
-            const previous_days = Object.keys(previous_daily_commits);
+                        const previous_daily_commits = yield velocity.groupCommitsByDay(grouped_commits.previous);
+                        const previous_days = Object.keys(previous_daily_commits);
 
-            const previous_commits = {
-                title: 'Previous',
-                x: previous_days,
-                y: previous_days.map(day => previous_daily_commits[day].length),
-                style: {
-                    line: 'red'
-                }
-            };
+                        const previous_commits = {
+                            title: 'Previous',
+                            x: previous_days,
+                            y: previous_days.map(day => previous_daily_commits[day].length),
+                            style: {
+                                line: 'red'
+                            }
+                        };
 
-            const current_daily_commits = velocity.groupCommitsByDay(grouped_commits.current);
-            const current_days = Object.keys(current_daily_commits);
+                        const current_daily_commits = yield velocity.groupCommitsByDay(grouped_commits.current);
+                        const current_days = Object.keys(current_daily_commits);
 
-            const current_commits = {
-                title: 'Current',
-                x: current_days,
-                y: current_days.map(day => current_daily_commits[day].length),
-                style: {
-                    line: 'green'
-                }
-            };
+                        const current_commits = {
+                            title: 'Current',
+                            x: current_days,
+                            y: current_days.map(day => current_daily_commits[day].length),
+                            style: {
+                                line: 'green'
+                            }
+                        };
 
-            layout.info.setMarkdown(info_content_formatted);
-            layout.velocity.setData([ current_commits, previous_commits ]);
-            commit_messages.forEach(message => layout.listing.log(message));
+                        layout.info.setMarkdown(info_content_formatted);
+                        layout.velocity.setData([ previous_commits, current_commits ]);
+                        commit_messages.forEach(message => layout.listing.log(message));
+
+                        resolve();
+                    }
+                    catch (error) {
+                        reject(error);
+                    }
+                });
+            });
         }
     };
 }
