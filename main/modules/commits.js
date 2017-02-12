@@ -140,7 +140,7 @@ function _requestFullBitBucketResponse(func, options, values = []) {
         async(function* () {
             try {
                 const { url, config } = options;
-                const response = JSON.parse(yield requestPromise(url, config));
+                const response = yield requestPromise(url, config);
                 const chunked_values = values.concat(func(response.data));
 
                 if (response.data.next) {
