@@ -6,9 +6,24 @@
     "configurations": [
         {
             "type": "node",
-            "request": "attach",
-            "name": "Attach to Process",
-            "port": 12345
+            "request": "launch",
+            "name": "Launch via NPM",
+            "runtimeExecutable": "npm",
+            "windows": {
+                "runtimeExecutable": "npm.cmd"
+            },
+            "runtimeArgs": [
+                "run-script",
+                "debug"
+            ],
+            "console": "integratedTerminal",
+            "port": 12345,
+            "cwd": "${workspaceRoot}",
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/dist/**/*.js"
+            ],
+            "restart": true
         }
     ]
 }
