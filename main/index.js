@@ -55,7 +55,7 @@ async(function* () {
         const { format } = yield getVelocityFormat();
 
         const dashboard = CommitsDashboard();
-        yield wrapSpinner(dashboard.render, 'Rendering dashboard...')(format, data);
+        yield dashboard.render(format, data);
     }
     catch (error) {
         console.error(chalk.red('=== ERROR ==='));

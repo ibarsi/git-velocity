@@ -1,5 +1,6 @@
 import { screen } from 'blessed';
 import { grid, markdown, log, line } from 'blessed-contrib';
+import moment from 'moment';
 
 import { async } from './helpers';
 import { Velocity } from './velocity';
@@ -62,7 +63,10 @@ export default function CommitsDashboard() {
 
                         // LISTING
 
-                        const commit_messages = commits.map(commit => `${ commit.author }: ${ commit.message }`).reverse();
+                        const commit_messages = commits
+                            .slice(commits.length < 30 ? 0 : commits.length - 31)
+                            .map(commit => `(${ moment(commit.date).format('MMM Do') }) ${ commit.author }: ${ commit.message }`)
+                            .reverse();
 
                         // VELOCITY
 
