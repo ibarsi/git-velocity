@@ -19,8 +19,6 @@ import CommitsDashboard from './modules/dashboard';
 const repository_package_path = `${ process.cwd() }/package.json`;
 const repository_package = isFile(repository_package_path) ? require(repository_package_path) : undefined;
 
-const slug_regex = new RegExp('^(?!\s)([a-z0-9|-]+)$');
-
 // BANNER
 
 clear();
@@ -60,7 +58,8 @@ async(function* () {
         yield wrapSpinner(dashboard.render, 'Rendering dashboard...')(format, data);
     }
     catch (error) {
-        console.error(chalk.red(error));
+        console.error(chalk.red('=== ERROR ==='));
+        console.log(error);
     }
 });
 
@@ -114,7 +113,7 @@ function getRepositoryInfo() {
                 type: 'input',
                 message: 'Enter the slugged name of the repository:',
                 default: path.basename(process.cwd()),
-                validate: value => value.length && slug_regex.test(value) ? true : 'Please enter a valid slug.'
+                validate: value => value.length ? true : 'Please enter a value.'
             },
             {
                 name: 'owner',

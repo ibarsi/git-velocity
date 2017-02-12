@@ -44,7 +44,10 @@ export function requestPromise(url, config) {
                 response.on('data', result => { chunk += result; });
 
                 response.on('end', () => {
-                    resolve(chunk);
+                    resolve({
+                        data: JSON.parse(chunk),
+                        headers: response.headers
+                    });
                 });
             });
     });

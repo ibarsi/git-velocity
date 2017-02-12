@@ -45,6 +45,7 @@ export default function CommitsDashboard() {
             return new Promise((resolve, reject) => {
                 async(function* () {
                     try {
+                        // INIT
                         if (!dashboard) {
                             dashboard = _initScreen();
                             layout = _initLayout(dashboard);
@@ -60,7 +61,10 @@ export default function CommitsDashboard() {
                             .replace('{{previous_commits}}', grouped_commits.previous.length);
 
                         // LISTING
+
                         const commit_messages = commits.map(commit => `${ commit.author }: ${ commit.message }`).reverse();
+
+                        // VELOCITY
 
                         const previous_daily_commits = yield velocity.groupCommitsByDay(grouped_commits.previous);
                         const previous_days = Object.keys(previous_daily_commits);
@@ -85,6 +89,8 @@ export default function CommitsDashboard() {
                                 line: 'green'
                             }
                         };
+
+                        // LAYOUT
 
                         layout.info.setMarkdown(info_content_formatted);
                         layout.velocity.setData([ previous_commits, current_commits ]);

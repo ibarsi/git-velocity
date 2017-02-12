@@ -49,10 +49,10 @@ export function Commits(type = TYPES.GITHUB) {
 
                         switch (type) {
                             case TYPES.GITHUB:
-                                resolve(yield _requestFullResponse((result) => result.map(GitHubCommit), options));
+                                resolve(yield _requestFullGitHubResponse((result) => result.map(GitHubCommit), options));
                                 break;
                             case TYPES.BITBUCKET:
-                                resolve(yield _requestFullResponse((result) => result.values.map(BitBucketCommit), options));
+                                resolve(yield _requestFullBitBucketResponse((result) => result.values.map(BitBucketCommit), options));
                                 break;
                             default:
                                 resolve([]);
@@ -135,16 +135,42 @@ function _getCreds(token) {
     });
 }
 
-function _requestFullResponse(func, options, values = []) {
+function _requestFullBitBucketResponse(func, options, values = []) {
     return new Promise((resolve, reject) => {
         async(function* () {
             try {
                 const { url, config } = options;
-                const result = JSON.parse(yield requestPromise(url, config));
-                const chunked_values = values.concat(func(result));
+                const response = JSON.parse(yield requestPromise(url, config));
+                const chunked_values = values.concat(func(response.data));
 
-                if (result.next) {
-                    resolve(_requestFullResponse(func, { url: result.next, config }, chunked_values));
+                if (response.data.next) {
+                    resolve(_requestFullBitBucketResponse(func, { url: response.data.next, config }, chunked_values));
+                }
+
+                resolve(chunked_values);
+            }
+            catch (error) {
+                reject(error);
+            }
+        });
+    });
+}
+
+function _requestFullGitHubResponse(func, options, values = []) {
+    return new Promise((resolve, reject) => {
+        async(function* () {
+            try {
+                const { url, config } = options;
+                const response = yield requestPromise(url, config);
+                const chunked_values = values.concat(func(response.data));
+
+                const link = response.headers.link;
+
+                if (link && link.indexOf('rel="next"') >= 0) {
+                    const next_url = link.substring(0, link.indexOf('rel="next"'));
+                    const next_url_formatted = next_url.trim().replace('<', '').replace('>', '').replace(';', '');
+
+                    resolve(_requestFullGitHubResponse(func, { url: next_url_formatted, config }, chunked_values));
                 }
 
                 resolve(chunked_values);
