@@ -64,7 +64,7 @@ export default function CommitsDashboard() {
                         // LISTING
 
                         const commit_messages = commits
-                            .slice(commits.length < 30 ? 0 : commits.length - 31)
+                            .slice(0, commits.length < 30 ? commits.length : 30)
                             .map(commit => `(${ moment(commit.date).format('MMM Do') }) ${ commit.author }: ${ commit.message }`)
                             .reverse();
 
