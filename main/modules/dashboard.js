@@ -11,8 +11,9 @@ const info_content =
 `# GIT VELOCITY
 Welcome to the \`git-velocity\` dashboard!
 
-Current Commits: *{{current_commits}}*
-Previous Commits: *{{previous_commits}}*
+Configuration: __{{format}}__
+Current Commits: __{{current_commits}}__
+Previous Commits: __{{previous_commits}}__
 
 Press \`Esc\` or \`Ctrl/Cmd-C\` to quit.`;
 
@@ -26,7 +27,7 @@ const line_settings = {
     style: {
         line: 'yellow',
         text: 'white',
-        baseline: 'black'
+        baseline: 'white'
     },
     xLabelPadding: 3,
     xPadding: 5,
@@ -58,6 +59,7 @@ export default function CommitsDashboard() {
                         // INFO
 
                         const info_content_formatted = info_content
+                            .replace('{{format}}', format)
                             .replace('{{current_commits}}', grouped_commits.current.length)
                             .replace('{{previous_commits}}', grouped_commits.previous.length);
 

@@ -2,7 +2,7 @@
   "name": "git-velocity",
   "version": "2.1.0",
   "description": "CLI tool used to calculate git commit velocity",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "https://github.com/ibarsi/git-velocity",
   "bin": {
     "git-velocity": "./dist/index.js"
