@@ -3,7 +3,10 @@
   "version": "0.0.0-development",
   "description": "CLI tool used to calculate git commit velocity",
   "main": "dist/index.js",
-  "repository": "https://github.com/ibarsi/git-velocity",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ibarsi/git-velocity"
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
