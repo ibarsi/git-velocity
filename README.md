@@ -1,6 +1,7 @@
 # git-velocity
 
 [![npm](https://img.shields.io/npm/v/git-velocity.svg?style=flat-square)](https://www.npmjs.com/package/git-velocity)
+[![Travis branch](https://img.shields.io/travis/ibarsi/git-velocity/master.svg?style=flat-square)](https://travis-ci.org/ibarsi/git-velocity)
 
 `git-velocity` is a CLI tool used to calculate commit velocity over time.
 When invoked, the tool reads your current directory (looking for `package.json`) and attempts to "guess" reasonable defaults for the repository you're wanting to analyze, accepting user input for overrides.
