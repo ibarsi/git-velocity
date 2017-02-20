@@ -70,9 +70,9 @@ function BitBucketCommits() {
                             }
                         };
 
-                        const commits = yield _requestFullBitBucketResponse(options);
+                        const commits = yield _requestPagedResponse(options, response => response.data.next);
 
-                        resolve(commits.map(BitBucketCommit));
+                        resolve(commits.reduce((acc, value) => acc.concat(value.values), []).map(BitBucketCommit));
                     }
                     catch (error) {
                         reject(error);
@@ -101,6 +101,17 @@ function GitHubCommits() {
         token: '.github_token'
     };
 
+    const nextPageFunc = response => {
+        const link = response.headers.link;
+
+        if (link && link.indexOf('rel="next"') >= 0) {
+            const next_url = link.substring(0, link.indexOf('rel="next"'));
+            const next_url_formatted = next_url.trim().replace('<', '').replace('>', '').replace(';', '');
+
+            return next_url_formatted;
+        }
+    };
+
     return {
         isCredsTokenInitialized: partial(_isCredsTokenInitialized, config.token),
         storeCreds: partial(_storeCreds, config.token),
@@ -122,9 +133,9 @@ function GitHubCommits() {
 
                         const branches = yield requestPromise(config.branches_url.replace('{owner}', owner).replace('{repo}', repository), options.config);
                         const branch_commit_results = yield Promise.all(branches.data.map(branch => {
-                            return _requestFullGitHubResponse(Object.assign({}, options, {
+                            return _requestPagedResponse(Object.assign({}, options, {
                                     url: `${ options.url }?sha=${ branch.name }`
-                                }));
+                                }), nextPageFunc);
                         }));
 
                         const github_commits = branch_commit_results.reduce((acc, list) => acc.concat(list), []);
@@ -177,28 +188,7 @@ function _getCreds(token) {
     });
 }
 
-function _requestFullBitBucketResponse(options, values = []) {
-    return new Promise((resolve, reject) => {
-        async(function* () {
-            try {
-                const { url, config } = options;
-                const response = yield requestPromise(url, config);
-                const chunked_values = values.concat(response.data.values);
-
-                if (response.data.next) {
-                    resolve(_requestFullBitBucketResponse({ url: response.data.next, config }, chunked_values));
-                }
-
-                resolve(chunked_values);
-            }
-            catch (error) {
-                reject(error);
-            }
-        });
-    });
-}
-
-function _requestFullGitHubResponse(options, values = []) {
+function _requestPagedResponse(options, next_page_func, values = []) {
     return new Promise((resolve, reject) => {
         async(function* () {
             try {
@@ -206,13 +196,10 @@ function _requestFullGitHubResponse(options, values = []) {
                 const response = yield requestPromise(url, config);
                 const chunked_values = values.concat(response.data);
 
-                const link = response.headers.link;
+                const next_page_url = next_page_func(response);
 
-                if (link && link.indexOf('rel="next"') >= 0) {
-                    const next_url = link.substring(0, link.indexOf('rel="next"'));
-                    const next_url_formatted = next_url.trim().replace('<', '').replace('>', '').replace(';', '');
-
-                    resolve(_requestFullGitHubResponse({ url: next_url_formatted, config }, chunked_values));
+                if (next_page_url) {
+                    resolve(_requestPagedResponse({ url: next_page_url, config }, next_page_func, chunked_values));
                 }
 
                 resolve(chunked_values);
