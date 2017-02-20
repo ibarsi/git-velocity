@@ -22,6 +22,22 @@ export function isFile(path) {
     }
 }
 
+export function uniq(list, func) {
+    const uids = [];
+    const unique_set = [];
+
+    list.forEach(item => {
+        const uid = func(item);
+
+        if (uids.indexOf(uid) < 0) {
+            uids.push(uid);
+            unique_set.push(item);
+        }
+    });
+
+    return unique_set;
+}
+
 export function wrapSpinner(promise, message = '') {
     const spinner = new CLI.Spinner(message);
     spinner.start();
@@ -72,6 +88,7 @@ export function async(gen, context = undefined) {
 
 export default {
     isFile,
+    uniq,
     wrapSpinner,
     partial,
     async

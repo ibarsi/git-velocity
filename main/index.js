@@ -76,7 +76,11 @@ function getRepositoryType() {
                     TYPES.GITHUB,
                     TYPES.BITBUCKET
                 ],
-                default: repository_package ? getRepositoryTypeFromUrl(repository_package.repository) : TYPES.GITHUB
+                default: repository_package ?
+                    getRepositoryTypeFromUrl(typeof repository_package.repository === 'string' ?
+                        repository_package.repository :
+                        repository_package.repository.type || repository_package.repository.url) :
+                    TYPES.GITHUB
             }
         ];
 
