@@ -15,7 +15,7 @@ Configuration: __{{format}}__
 Current Commits: __{{current_commits}}__
 Previous Commits: __{{previous_commits}}__
 
-Press \`Esc\` or \`Ctrl/Cmd-C\` to quit.`;
+Press \`Esc\` or \`Ctrl-C\` to quit.`;
 
 const listing_settings = {
     fg: 'green',
