@@ -2,9 +2,8 @@
     COMMITS
 ================================================== */
 
-import fs from 'fs';
-
-import { isFile, uniq, partial, async, requestPromise } from './helpers';
+import { uniq, async, requestPromise } from './helpers';
+import { Auth } from './auth';
 
 // PUBLIC
 
@@ -47,18 +46,19 @@ export default {
 
 function BitBucketCommits() {
     const config = {
-        commits_url: 'https://api.bitbucket.org/2.0/repositories/{owner}/{repo}/commits',
-        token: '.bitbucket_token'
+        commits_url: 'https://api.bitbucket.org/2.0/repositories/{owner}/{repo}/commits'
     };
 
+    const auth = Auth('.bitbucket_token');
+
     return {
-        isCredsTokenInitialized: partial(_isCredsTokenInitialized, config.token),
-        storeCreds: partial(_storeCreds, config.token),
+        isCredsTokenInitialized: auth.isCredsTokenInitialized,
+        storeCreds: auth.storeCreds,
         getCommitsByRepo(repository, owner) {
             return new Promise((resolve, reject) => {
                 async(function* () {
                     try {
-                        const { username, password } = yield _getCreds(config.token);
+                        const { username, password } = yield auth.getCreds();
 
                         const options = {
                             url: config.commits_url.replace('{owner}', owner).replace('{repo}', repository),
@@ -97,9 +97,10 @@ function BitBucketCommit(value) {
 function GitHubCommits() {
     const config = {
         commits_url: 'https://api.github.com/repos/{owner}/{repo}/commits',
-        branches_url: 'https://api.github.com/repos/{owner}/{repo}/branches',
-        token: '.github_token'
+        branches_url: 'https://api.github.com/repos/{owner}/{repo}/branches'
     };
+
+    const auth = Auth('.github_token');
 
     const nextPageFunc = response => {
         const link = response.headers.link;
@@ -113,13 +114,13 @@ function GitHubCommits() {
     };
 
     return {
-        isCredsTokenInitialized: partial(_isCredsTokenInitialized, config.token),
-        storeCreds: partial(_storeCreds, config.token),
+        isCredsTokenInitialized: auth.isCredsTokenInitialized,
+        storeCreds: auth.storeCreds,
         getCommitsByRepo(repository, owner) {
             return new Promise((resolve, reject) => {
                 async(function* () {
                     try {
-                        const { username, password } = yield _getCreds(config.token);
+                        const { username, password } = yield auth.getCreds();
 
                         const options = {
                             url: config.commits_url.replace('{owner}', owner).replace('{repo}', repository),
@@ -162,31 +163,6 @@ function GitHubCommit(value) {
 }
 
 // PRIVATE
-
-function _isCredsTokenInitialized(token) {
-    return new Promise(resolve => resolve(isFile(`${ process.env.HOME }/${ token }`)));
-}
-
-function _storeCreds(token, username, password) {
-    return new Promise((resolve, reject) => {
-        fs.writeFile(
-            `${ process.env.HOME }/${ token }`,
-            JSON.stringify({ username, password }),
-            error => error ? reject(error) : resolve()
-        );
-    });
-}
-
-function _getCreds(token) {
-    return new Promise((resolve, reject) => {
-        try {
-            resolve(JSON.parse(fs.readFileSync(`${ process.env.HOME }/${ token }`, 'utf8')));
-        }
-        catch (error) {
-            reject(error);
-        }
-    });
-}
 
 function _requestPagedResponse(options, next_page_func, values = []) {
     return new Promise((resolve, reject) => {
