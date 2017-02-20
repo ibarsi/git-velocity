@@ -36,7 +36,7 @@ async(function* () {
         const { type } = yield getRepositoryType();
         const commits = Commits(type);
 
-        const isTokenInitialized = yield commits.isCredsTokenInitialized();
+        const isTokenInitialized = yield commits.isAuthorized();
 
         if (!isTokenInitialized) {
             console.log();
@@ -44,7 +44,7 @@ async(function* () {
 
             const { username, password } = yield getRepositoryCreds(type);
 
-            commits.storeCreds(username, password);
+            commits.authorize(username, password);
         }
 
         console.log();

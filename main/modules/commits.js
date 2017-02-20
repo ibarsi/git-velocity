@@ -15,9 +15,9 @@ export const TYPES = {
 export function Commits(type = TYPES.GITHUB) {
     switch (type) {
         case TYPES.GITHUB:
-            return GitHubCommits();
+            return GitHubCommits(Auth('.github_token'));
         case TYPES.BITBUCKET:
-            return BitBucketCommits();
+            return BitBucketCommits(Auth('.bitbucket_token'));
         default:
             break;
     }
@@ -44,16 +44,14 @@ export default {
 
 // BITBUCKET
 
-function BitBucketCommits() {
+function BitBucketCommits(auth) {
     const config = {
         commits_url: 'https://api.bitbucket.org/2.0/repositories/{owner}/{repo}/commits'
     };
 
-    const auth = Auth('.bitbucket_token');
-
     return {
-        isCredsTokenInitialized: auth.isCredsTokenInitialized,
-        storeCreds: auth.storeCreds,
+        isAuthorized: auth.isCredsTokenInitialized,
+        authorize: auth.storeCreds,
         getCommitsByRepo(repository, owner) {
             return new Promise((resolve, reject) => {
                 async(function* () {
@@ -94,13 +92,11 @@ function BitBucketCommit(value) {
 
 // GITHUB
 
-function GitHubCommits() {
+function GitHubCommits(auth) {
     const config = {
         commits_url: 'https://api.github.com/repos/{owner}/{repo}/commits',
         branches_url: 'https://api.github.com/repos/{owner}/{repo}/branches'
     };
-
-    const auth = Auth('.github_token');
 
     const nextPageFunc = response => {
         const link = response.headers.link;
@@ -114,8 +110,8 @@ function GitHubCommits() {
     };
 
     return {
-        isCredsTokenInitialized: auth.isCredsTokenInitialized,
-        storeCreds: auth.storeCreds,
+        isAuthorized: auth.isCredsTokenInitialized,
+        authorize: auth.storeCreds,
         getCommitsByRepo(repository, owner) {
             return new Promise((resolve, reject) => {
                 async(function* () {
