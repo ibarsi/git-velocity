@@ -4,7 +4,7 @@
 
 import fs from 'fs';
 
-import { isFile, uniq, async, requestPromise } from './helpers';
+import { isFile, uniq, partial, async, requestPromise } from './helpers';
 
 // PUBLIC
 
@@ -14,68 +14,14 @@ export const TYPES = {
 };
 
 export function Commits(type = TYPES.GITHUB) {
-    const config = _initCommitProps(type);
-
-    return {
-        isCredsTokenInitialized() {
-            return new Promise(resolve => resolve(isFile(`${ process.env.HOME }/${ config.token }`)));
-        },
-        storeCreds(username, password) {
-            return new Promise((resolve, reject) => {
-                fs.writeFile(
-                    `${ process.env.HOME }/${ config.token }`,
-                    JSON.stringify({ username, password }),
-                    error => error ? reject(error) : resolve()
-                );
-            });
-        },
-        getCommitsByRepo(repository, owner) {
-            return new Promise((resolve, reject) => {
-                async(function* () {
-                    try {
-                        const { username, password } = yield _getCreds(config.token);
-
-                        const options = {
-                            url: config.commits_url.replace('{owner}', owner).replace('{repo}', repository),
-                            config: {
-                                headers: {
-                                    'User-Agent': owner,
-                                    Authorization: 'Basic ' + new Buffer(`${ username }:${ password }`).toString('base64')
-                                }
-                            }
-                        };
-
-                        switch (type) {
-                            case TYPES.GITHUB:
-                                const branches = yield requestPromise(config.branches_url.replace('{owner}', owner).replace('{repo}', repository), options.config);
-                                const branch_commit_results = yield Promise.all(branches.data.map(branch => {
-                                    return _requestFullGitHubResponse(Object.assign({}, options, {
-                                            url: `${ options.url }?sha=${ branch.name }`
-                                        }));
-                                }));
-
-                                const github_commits = branch_commit_results.reduce((acc, list) => acc.concat(list), []);
-                                const unique_commits = uniq(github_commits, item => item.sha);
-
-                                resolve(unique_commits.map(GitHubCommit));
-                                break;
-                            case TYPES.BITBUCKET:
-                                const bitbucket_commits = yield _requestFullBitBucketResponse(options);
-
-                                resolve(bitbucket_commits.map(BitBucketCommit));
-                                break;
-                            default:
-                                resolve([]);
-                                break;
-                        }
-                    }
-                    catch (error) {
-                        reject(error);
-                    }
-                });
-            });
-        }
-    };
+    switch (type) {
+        case TYPES.GITHUB:
+            return GitHubCommits();
+        case TYPES.BITBUCKET:
+            return BitBucketCommits();
+        default:
+            break;
+    }
 }
 
 export function getRepositoryTypeFromUrl(repository_url) {
@@ -97,7 +43,45 @@ export default {
     getRepositoryTypeFromUrl
 };
 
-// PRIVATE
+// BITBUCKET
+
+function BitBucketCommits() {
+    const config = {
+        commits_url: 'https://api.bitbucket.org/2.0/repositories/{owner}/{repo}/commits',
+        token: '.bitbucket_token'
+    };
+
+    return {
+        isCredsTokenInitialized: partial(_isCredsTokenInitialized, config.token),
+        storeCreds: partial(_storeCreds, config.token),
+        getCommitsByRepo(repository, owner) {
+            return new Promise((resolve, reject) => {
+                async(function* () {
+                    try {
+                        const { username, password } = yield _getCreds(config.token);
+
+                        const options = {
+                            url: config.commits_url.replace('{owner}', owner).replace('{repo}', repository),
+                            config: {
+                                headers: {
+                                    'User-Agent': owner,
+                                    Authorization: 'Basic ' + new Buffer(`${ username }:${ password }`).toString('base64')
+                                }
+                            }
+                        };
+
+                        const commits = yield _requestFullBitBucketResponse(options);
+
+                        resolve(commits.map(BitBucketCommit));
+                    }
+                    catch (error) {
+                        reject(error);
+                    }
+                });
+            });
+        }
+    };
+}
 
 function BitBucketCommit(value) {
     return {
@@ -105,6 +89,55 @@ function BitBucketCommit(value) {
         author: value.author.user ? value.author.user.display_name : value.author.raw,
         message: value.message,
         date: value.date
+    };
+}
+
+// GITHUB
+
+function GitHubCommits() {
+    const config = {
+        commits_url: 'https://api.github.com/repos/{owner}/{repo}/commits',
+        branches_url: 'https://api.github.com/repos/{owner}/{repo}/branches',
+        token: '.github_token'
+    };
+
+    return {
+        isCredsTokenInitialized: partial(_isCredsTokenInitialized, config.token),
+        storeCreds: partial(_storeCreds, config.token),
+        getCommitsByRepo(repository, owner) {
+            return new Promise((resolve, reject) => {
+                async(function* () {
+                    try {
+                        const { username, password } = yield _getCreds(config.token);
+
+                        const options = {
+                            url: config.commits_url.replace('{owner}', owner).replace('{repo}', repository),
+                            config: {
+                                headers: {
+                                    'User-Agent': owner,
+                                    Authorization: 'Basic ' + new Buffer(`${ username }:${ password }`).toString('base64')
+                                }
+                            }
+                        };
+
+                        const branches = yield requestPromise(config.branches_url.replace('{owner}', owner).replace('{repo}', repository), options.config);
+                        const branch_commit_results = yield Promise.all(branches.data.map(branch => {
+                            return _requestFullGitHubResponse(Object.assign({}, options, {
+                                    url: `${ options.url }?sha=${ branch.name }`
+                                }));
+                        }));
+
+                        const github_commits = branch_commit_results.reduce((acc, list) => acc.concat(list), []);
+                        const unique_commits = uniq(github_commits, item => item.sha);
+
+                        resolve(unique_commits.map(GitHubCommit));
+                    }
+                    catch (error) {
+                        reject(error);
+                    }
+                });
+            });
+        }
     };
 }
 
@@ -117,26 +150,20 @@ function GitHubCommit(value) {
     };
 }
 
-function _initCommitProps(type) {
-    switch (type) {
-        case TYPES.BITBUCKET:
-            return {
-                commits_url: 'https://api.bitbucket.org/2.0/repositories/{owner}/{repo}/commits',
-                token: '.bitbucket_token'
-            };
-        case TYPES.GITHUB:
-            return {
-                commits_url: 'https://api.github.com/repos/{owner}/{repo}/commits',
-                branches_url: 'https://api.github.com/repos/{owner}/{repo}/branches',
-                token: '.github_token'
-            };
-        default:
-            return {
-                commits_url: '',
-                branches_url: '',
-                token: ''
-            };
-    }
+// PRIVATE
+
+function _isCredsTokenInitialized(token) {
+    return new Promise(resolve => resolve(isFile(`${ process.env.HOME }/${ token }`)));
+}
+
+function _storeCreds(token, username, password) {
+    return new Promise((resolve, reject) => {
+        fs.writeFile(
+            `${ process.env.HOME }/${ token }`,
+            JSON.stringify({ username, password }),
+            error => error ? reject(error) : resolve()
+        );
+    });
 }
 
 function _getCreds(token) {
