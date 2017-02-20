@@ -4,7 +4,7 @@
 
 import fs from 'fs';
 
-import { isFile, async, requestPromise } from './helpers';
+import { isFile, uniq, async, requestPromise } from './helpers';
 
 // PUBLIC
 
@@ -33,12 +33,10 @@ export function Commits(type = TYPES.GITHUB) {
             return new Promise((resolve, reject) => {
                 async(function* () {
                     try {
-                        const url = config.url.replace('{owner}', owner).replace('{repo}', repository);
-
                         const { username, password } = yield _getCreds(config.token);
 
                         const options = {
-                            url,
+                            url: config.commits_url.replace('{owner}', owner).replace('{repo}', repository),
                             config: {
                                 headers: {
                                     'User-Agent': owner,
@@ -49,10 +47,22 @@ export function Commits(type = TYPES.GITHUB) {
 
                         switch (type) {
                             case TYPES.GITHUB:
-                                resolve(yield _requestFullGitHubResponse((result) => result.map(GitHubCommit), options));
+                                const branches = yield requestPromise(config.branches_url.replace('{owner}', owner).replace('{repo}', repository), options.config);
+                                const branch_commit_results = yield Promise.all(branches.data.map(branch => {
+                                    return _requestFullGitHubResponse(Object.assign({}, options, {
+                                            url: `${ options.url }?sha=${ branch.name }`
+                                        }));
+                                }));
+
+                                const github_commits = branch_commit_results.reduce((acc, list) => acc.concat(list), []);
+                                const unique_commits = uniq(github_commits, item => item.sha);
+
+                                resolve(unique_commits.map(GitHubCommit));
                                 break;
                             case TYPES.BITBUCKET:
-                                resolve(yield _requestFullBitBucketResponse((result) => result.values.map(BitBucketCommit), options));
+                                const bitbucket_commits = yield _requestFullBitBucketResponse(options);
+
+                                resolve(bitbucket_commits.map(BitBucketCommit));
                                 break;
                             default:
                                 resolve([]);
@@ -91,6 +101,7 @@ export default {
 
 function BitBucketCommit(value) {
     return {
+        id: value.sha,
         author: value.author.user ? value.author.user.display_name : value.author.raw,
         message: value.message,
         date: value.date
@@ -99,6 +110,7 @@ function BitBucketCommit(value) {
 
 function GitHubCommit(value) {
     return {
+        id: value.sha,
         author: value.commit.author.name,
         message: value.commit.message,
         date: value.commit.committer.date
@@ -109,17 +121,20 @@ function _initCommitProps(type) {
     switch (type) {
         case TYPES.BITBUCKET:
             return {
-                url: 'https://api.bitbucket.org/2.0/repositories/{owner}/{repo}/commits',
+                commits_url: 'https://api.bitbucket.org/2.0/repositories/{owner}/{repo}/commits',
                 token: '.bitbucket_token'
             };
         case TYPES.GITHUB:
             return {
-                url: 'https://api.github.com/repos/{owner}/{repo}/commits',
+                commits_url: 'https://api.github.com/repos/{owner}/{repo}/commits',
+                branches_url: 'https://api.github.com/repos/{owner}/{repo}/branches',
                 token: '.github_token'
             };
         default:
             return {
-                url: ''
+                commits_url: '',
+                branches_url: '',
+                token: ''
             };
     }
 }
@@ -135,16 +150,16 @@ function _getCreds(token) {
     });
 }
 
-function _requestFullBitBucketResponse(func, options, values = []) {
+function _requestFullBitBucketResponse(options, values = []) {
     return new Promise((resolve, reject) => {
         async(function* () {
             try {
                 const { url, config } = options;
                 const response = yield requestPromise(url, config);
-                const chunked_values = values.concat(func(response.data));
+                const chunked_values = values.concat(response.data.values);
 
                 if (response.data.next) {
-                    resolve(_requestFullBitBucketResponse(func, { url: response.data.next, config }, chunked_values));
+                    resolve(_requestFullBitBucketResponse({ url: response.data.next, config }, chunked_values));
                 }
 
                 resolve(chunked_values);
@@ -156,13 +171,13 @@ function _requestFullBitBucketResponse(func, options, values = []) {
     });
 }
 
-function _requestFullGitHubResponse(func, options, values = []) {
+function _requestFullGitHubResponse(options, values = []) {
     return new Promise((resolve, reject) => {
         async(function* () {
             try {
                 const { url, config } = options;
                 const response = yield requestPromise(url, config);
-                const chunked_values = values.concat(func(response.data));
+                const chunked_values = values.concat(response.data);
 
                 const link = response.headers.link;
 
@@ -170,7 +185,7 @@ function _requestFullGitHubResponse(func, options, values = []) {
                     const next_url = link.substring(0, link.indexOf('rel="next"'));
                     const next_url_formatted = next_url.trim().replace('<', '').replace('>', '').replace(';', '');
 
-                    resolve(_requestFullGitHubResponse(func, { url: next_url_formatted, config }, chunked_values));
+                    resolve(_requestFullGitHubResponse({ url: next_url_formatted, config }, chunked_values));
                 }
 
                 resolve(chunked_values);
