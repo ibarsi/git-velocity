@@ -25,7 +25,9 @@ clear();
 
 console.log(
     chalk.yellow(
-        figlet.textSync('Git Velocity', { horizontalLayout: 'full' })
+        figlet.textSync('Git Velocity', {
+            horizontalLayout: 'full'
+        })
     )
 );
 
@@ -36,9 +38,9 @@ async(function* () {
         const { type } = yield getRepositoryType();
         const commits = Commits(type);
 
-        const isTokenInitialized = yield commits.isAuthorized();
+        const isAuthorized = yield commits.isAuthorized();
 
-        if (!isTokenInitialized) {
+        if (!isAuthorized) {
             console.log();
             console.log(chalk.white('Creating auth token in root.'));
 
