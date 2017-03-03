@@ -13,7 +13,7 @@ import inquirer from 'inquirer';
 
 import { isFile, wrapSpinner, async } from './modules/helpers';
 import { TYPES, Commits, getRepositoryTypeFromUrl } from './modules/commits';
-import { FORMATS } from './modules/velocity';
+import { FORMATS, Velocity } from './modules/velocity';
 import CommitsDashboard from './modules/dashboard';
 
 const repository_package_path = `${ process.cwd() }/package.json`;
@@ -53,8 +53,12 @@ async(function* () {
         console.log(chalk.white('Provide information regarding the repository you\'d like to analyze.'));
 
         const { repository, owner } = yield getRepositoryInfo();
-        const data = yield wrapSpinner(commits.getCommitsByRepo, 'Pulling commits...')(repository, owner);
         const { format } = yield getVelocityFormat();
+
+        const velocity = Velocity(format);
+
+        const data = yield wrapSpinner(commits.getCommitsByRepo, 'Pulling commits...')(repository, owner,
+            commit => !velocity.isDateWithinThisTimeFrame(commit.date) && !velocity.isDateWithinLastTimeFrame(commit.date));
 
         const dashboard = CommitsDashboard();
         yield dashboard.render(format, data);

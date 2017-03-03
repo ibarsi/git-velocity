@@ -15,7 +15,9 @@ export const FORMATS = {
 
 export function Velocity(format) {
     return {
-        groupCommitsByFormat: partial(_groupCommitsByFormat, format),
+        isDateWithinThisTimeFrame: partial(_isDateWithinThisTimeFrame, format),
+        isDateWithinLastTimeFrame: partial(_isDateWithinLastTimeFrame, format),
+        groupCommitsByFormat: partial(_groupCommitsByTime, _getFormatTimeValue(format)),
         groupCommitsByDay: partial(_groupCommitsByDay, format)
     };
 }
@@ -27,15 +29,34 @@ export default {
 
 // PRIVATE
 
-function _groupCommitsByFormat(format, commits) {
+function _getFormatTimeValue(format) {
     switch (format) {
         case FORMATS.WEEK:
-            return _groupCommitsByTime('week', commits);
+            return 'week';
         case FORMATS.MONTH:
-            return _groupCommitsByTime('month', commits);
+            return 'month';
         default:
             return undefined;
     }
+}
+
+function _isDateWithinThisTimeFrame(format, date) {
+    const time = _getFormatTimeValue(format);
+
+    const now = moment();
+    const start_of_time = moment(now).startOf(time).hours(0);
+
+    return start_of_time.isBefore(date) && now.isAfter(date);
+}
+
+function _isDateWithinLastTimeFrame(format, date) {
+    const time = _getFormatTimeValue(format);
+
+    const now = moment();
+    const start_of_time = moment(now).startOf(time).hours(0);
+    const start_of_last_time = moment(start_of_time).subtract(1, `${ time }s`);
+
+    return start_of_last_time.isBefore(date) && start_of_time.isAfter(date);
 }
 
 function _groupCommitsByTime(time, commits) {

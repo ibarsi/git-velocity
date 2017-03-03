@@ -52,7 +52,7 @@ function BitBucketCommits(auth) {
     return {
         isAuthorized: auth.isCredsTokenInitialized,
         authorize: auth.storeCreds,
-        getCommitsByRepo(repository, owner) {
+        getCommitsByRepo(repository, owner, take_until_func) {
             return new Promise((resolve, reject) => {
                 async(function* () {
                     try {
@@ -68,9 +68,9 @@ function BitBucketCommits(auth) {
                             }
                         };
 
-                        const commits = yield _requestPagedResponse(options, response => response.data.next);
+                        const commits = yield _requestPagedResponse(options, response => !response.data.values.map(BitBucketCommit).some(take_until_func) ? response.data.next : undefined);
 
-                        resolve(commits.reduce((acc, value) => acc.concat(value.values), []).map(BitBucketCommit));
+                        resolve(commits.reduce((acc, value) => acc.concat(value.values.map(BitBucketCommit)), []));
                     }
                     catch (error) {
                         reject(error);
