@@ -8,10 +8,10 @@ import { isFile } from './helpers';
 
 export function Auth(token) {
     return {
-        isCredsTokenInitialized: async function() {
+        async isCredsTokenInitialized() {
             return isFile(`${ process.env.HOME }/${ token }`);
         },
-        getCreds: async function() {
+        async getCreds() {
             return JSON.parse(fs.readFileSync(`${ process.env.HOME }/${ token }`, 'utf8'));
         },
         storeCreds(username, password) {

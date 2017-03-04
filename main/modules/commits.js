@@ -52,7 +52,7 @@ function BitBucketCommits(auth) {
     return {
         isAuthorized: auth.isCredsTokenInitialized,
         authorize: auth.storeCreds,
-        getCommitsByRepo: async function(repository, owner, take_while_func) {
+        async getCommitsByRepo(repository, owner, take_while_func) {
             const { username, password } = await auth.getCreds();
 
             const options = {
@@ -103,7 +103,7 @@ function GitHubCommits(auth) {
     return {
         isAuthorized: auth.isCredsTokenInitialized,
         authorize: auth.storeCreds,
-        getCommitsByRepo: async function(repository, owner) {
+        async getCommitsByRepo(repository, owner) {
             const { username, password } = await auth.getCreds();
 
             const options = {

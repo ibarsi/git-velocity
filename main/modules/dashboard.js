@@ -42,7 +42,7 @@ export default function CommitsDashboard() {
     let layout;
 
     return {
-        render: async function(format, commits) {
+        async render(format, commits) {
             // INIT
 
             if (!dashboard) {
