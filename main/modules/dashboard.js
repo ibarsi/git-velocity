@@ -2,7 +2,6 @@ import { screen } from 'blessed';
 import { grid, markdown, log, line } from 'blessed-contrib';
 import moment from 'moment';
 
-import { async } from './helpers';
 import { Velocity } from './velocity';
 
 // SETTINGS
@@ -43,72 +42,61 @@ export default function CommitsDashboard() {
     let layout;
 
     return {
-        render(format, commits) {
-            return new Promise((resolve, reject) => {
-                async(function* () {
-                    try {
-                        // INIT
-                        if (!dashboard) {
-                            dashboard = _initScreen();
-                            layout = _initLayout(dashboard);
-                        }
+        render: async function(format, commits) {
+            // INIT
 
-                        const velocity = Velocity(format);
-                        const grouped_commits = yield velocity.groupCommitsByFormat(commits);
+            if (!dashboard) {
+                dashboard = _initScreen();
+                layout = _initLayout(dashboard);
+            }
 
-                        // INFO
+            const velocity = Velocity(format);
+            const grouped_commits = await velocity.groupCommitsByFormat(commits);
 
-                        const info_content_formatted = info_content
-                            .replace('{{format}}', format)
-                            .replace('{{current_commits}}', grouped_commits.current.length)
-                            .replace('{{previous_commits}}', grouped_commits.previous.length);
+            // INFO
 
-                        // LISTING
+            const info_content_formatted = info_content
+                .replace('{{format}}', format)
+                .replace('{{current_commits}}', grouped_commits.current.length)
+                .replace('{{previous_commits}}', grouped_commits.previous.length);
 
-                        const commit_messages = commits
-                            .slice(0, commits.length < 30 ? commits.length : 30)
-                            .map(commit => `(${ moment(commit.date).format('MMM Do') }) ${ commit.author }: ${ commit.message }`)
-                            .reverse();
+            // LISTING
 
-                        // VELOCITY
+            const commit_messages = [ ...grouped_commits.current, ...grouped_commits.previous ]
+                .map(commit => `(${ moment(commit.date).format('MMM Do') }) ${ commit.author }: ${ commit.message }`)
+                .reverse();
 
-                        const previous_daily_commits = yield velocity.groupCommitsByDay(grouped_commits.previous);
-                        const previous_days = Object.keys(previous_daily_commits);
+            // VELOCITY
 
-                        const previous_commits = {
-                            title: 'Previous',
-                            x: previous_days,
-                            y: previous_days.map(day => previous_daily_commits[day].length),
-                            style: {
-                                line: 'red'
-                            }
-                        };
+            const previous_daily_commits = await velocity.groupCommitsByDay(grouped_commits.previous);
+            const previous_days = Object.keys(previous_daily_commits);
 
-                        const current_daily_commits = yield velocity.groupCommitsByDay(grouped_commits.current);
-                        const current_days = Object.keys(current_daily_commits);
+            const previous_commits = {
+                title: 'Previous',
+                x: previous_days,
+                y: previous_days.map(day => previous_daily_commits[day].length),
+                style: {
+                    line: 'red'
+                }
+            };
 
-                        const current_commits = {
-                            title: 'Current',
-                            x: current_days,
-                            y: current_days.map(day => current_daily_commits[day].length),
-                            style: {
-                                line: 'green'
-                            }
-                        };
+            const current_daily_commits = await velocity.groupCommitsByDay(grouped_commits.current);
+            const current_days = Object.keys(current_daily_commits);
 
-                        // LAYOUT
+            const current_commits = {
+                title: 'Current',
+                x: current_days,
+                y: current_days.map(day => current_daily_commits[day].length),
+                style: {
+                    line: 'green'
+                }
+            };
 
-                        layout.info.setMarkdown(info_content_formatted);
-                        layout.velocity.setData([ previous_commits, current_commits ]);
-                        commit_messages.forEach(message => layout.listing.log(message));
+            // LAYOUT
 
-                        resolve();
-                    }
-                    catch (error) {
-                        reject(error);
-                    }
-                });
-            });
+            layout.info.setMarkdown(info_content_formatted);
+            layout.velocity.setData([ previous_commits, current_commits ]);
+            commit_messages.forEach(message => layout.listing.log(message));
         }
     };
 }

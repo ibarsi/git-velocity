@@ -71,25 +71,12 @@ export function requestPromise(url, config) {
 
 // SOURCE: https://gist.github.com/ibarsi/856a0c46e37fb4c951b033995aec55d5
 export function partial(func, ...args) {
-    return (...inner_args) => func(...args, ...inner_args);
-}
-
-// SOURCE: https://gist.github.com/ChrisChares/1ed079b9a6c9877ba4b43424139b166d
-export function async(gen, context = undefined) {
-    const generator = typeof gen === 'function' ? gen() : gen;
-    const { value: promise } = generator.next(context);
-
-    if ( typeof promise !== 'undefined' ) {
-        promise
-            .then(resolved => async(generator, resolved))
-            .catch(error => generator.throw(error));
-    }
+    return func.bind(undefined, ...args);
 }
 
 export default {
     isFile,
     uniq,
     wrapSpinner,
-    partial,
-    async
+    partial
 };
