@@ -8,18 +8,11 @@ import { isFile } from './helpers';
 
 export function Auth(token) {
     return {
-        isCredsTokenInitialized() {
-            return new Promise(resolve => resolve(isFile(`${ process.env.HOME }/${ token }`)));
+        isCredsTokenInitialized: async function() {
+            return isFile(`${ process.env.HOME }/${ token }`);
         },
-        getCreds() {
-            return new Promise((resolve, reject) => {
-                try {
-                    resolve(JSON.parse(fs.readFileSync(`${ process.env.HOME }/${ token }`, 'utf8')));
-                }
-                catch (error) {
-                    reject(error);
-                }
-            });
+        getCreds: async function() {
+            return JSON.parse(fs.readFileSync(`${ process.env.HOME }/${ token }`, 'utf8'));
         },
         storeCreds(username, password) {
             return new Promise((resolve, reject) => {
