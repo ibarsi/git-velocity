@@ -30,8 +30,6 @@
     "url": "https://github.com/ibarsi/git-velocity/issues"
   },
   "dependencies": {
-    "async": "2.1.4",
-    "babel-runtime": "6.23.0",
     "blessed": "0.1.81",
     "blessed-contrib": "4.7.5",
     "chalk": "1.1.3",
@@ -45,16 +43,11 @@
   "devDependencies": {
     "babel-cli": "6.9.0",
     "babel-core": "6.9.0",
-    "babel-plugin-transform-runtime": "6.23.0",
-    "babel-preset-es2015": "6.9.0",
-    "babel-preset-es2016": "6.22.0",
-    "babel-preset-es2017": "6.22.0",
-    "babel-regenerator-runtime": "6.5.0",
+    "babel-preset-latest-minimal": "1.1.2",
     "chai": "3.5.0",
     "commitizen": "2.9.5",
     "cz-conventional-changelog": "1.2.0",
     "mocha": "3.2.0",
-    "nodemon": "1.9.2",
     "semantic-release": "6.3.2"
   }
 }
