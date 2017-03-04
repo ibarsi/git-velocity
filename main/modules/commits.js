@@ -2,7 +2,7 @@
     COMMITS
 ================================================== */
 
-import { uniq, async, requestPromise } from './helpers';
+import { uniq, requestPromise } from './helpers';
 import { Auth } from './auth';
 
 // PUBLIC
@@ -52,31 +52,22 @@ function BitBucketCommits(auth) {
     return {
         isAuthorized: auth.isCredsTokenInitialized,
         authorize: auth.storeCreds,
-        getCommitsByRepo(repository, owner, take_until_func) {
-            return new Promise((resolve, reject) => {
-                async(function* () {
-                    try {
-                        const { username, password } = yield auth.getCreds();
+        getCommitsByRepo: async function(repository, owner, take_while_func) {
+            const { username, password } = await auth.getCreds();
 
-                        const options = {
-                            url: config.commits_url.replace('{owner}', owner).replace('{repo}', repository),
-                            config: {
-                                headers: {
-                                    'User-Agent': owner,
-                                    Authorization: 'Basic ' + new Buffer(`${ username }:${ password }`).toString('base64')
-                                }
-                            }
-                        };
-
-                        const commits = yield _requestPagedResponse(options, response => !response.data.values.map(BitBucketCommit).some(take_until_func) ? response.data.next : undefined);
-
-                        resolve(commits.reduce((acc, value) => acc.concat(value.values.map(BitBucketCommit)), []));
+            const options = {
+                url: config.commits_url.replace('{owner}', owner).replace('{repo}', repository),
+                config: {
+                    headers: {
+                        'User-Agent': owner,
+                        Authorization: 'Basic ' + new Buffer(`${ username }:${ password }`).toString('base64')
                     }
-                    catch (error) {
-                        reject(error);
-                    }
-                });
-            });
+                }
+            };
+
+            const commits = await _requestPagedResponse(options, response => !response.data.values.map(BitBucketCommit).some(take_while_func) ? response.data.next : undefined);
+
+            return commits.reduce((acc, value) => acc.concat(value.values), []).map(BitBucketCommit);
         }
     };
 }
@@ -112,39 +103,30 @@ function GitHubCommits(auth) {
     return {
         isAuthorized: auth.isCredsTokenInitialized,
         authorize: auth.storeCreds,
-        getCommitsByRepo(repository, owner) {
-            return new Promise((resolve, reject) => {
-                async(function* () {
-                    try {
-                        const { username, password } = yield auth.getCreds();
+        getCommitsByRepo: async function(repository, owner) {
+            const { username, password } = await auth.getCreds();
 
-                        const options = {
-                            url: config.commits_url.replace('{owner}', owner).replace('{repo}', repository),
-                            config: {
-                                headers: {
-                                    'User-Agent': owner,
-                                    Authorization: 'Basic ' + new Buffer(`${ username }:${ password }`).toString('base64')
-                                }
-                            }
-                        };
-
-                        const branches = yield requestPromise(config.branches_url.replace('{owner}', owner).replace('{repo}', repository), options.config);
-                        const branch_commit_results = yield Promise.all(branches.data.map(branch => {
-                            return _requestPagedResponse(Object.assign({}, options, {
-                                    url: `${ options.url }?sha=${ branch.name }`
-                                }), nextPageFunc);
-                        }));
-
-                        const github_commits = branch_commit_results.reduce((acc, list) => acc.concat(list), []);
-                        const unique_commits = uniq(github_commits, item => item.sha);
-
-                        resolve(unique_commits.map(GitHubCommit));
+            const options = {
+                url: config.commits_url.replace('{owner}', owner).replace('{repo}', repository),
+                config: {
+                    headers: {
+                        'User-Agent': owner,
+                        Authorization: 'Basic ' + new Buffer(`${ username }:${ password }`).toString('base64')
                     }
-                    catch (error) {
-                        reject(error);
-                    }
-                });
-            });
+                }
+            };
+
+            const branches = await requestPromise(config.branches_url.replace('{owner}', owner).replace('{repo}', repository), options.config);
+            const branch_commit_results = await Promise.all(branches.data.map(branch => {
+                return _requestPagedResponse(Object.assign({}, options, {
+                        url: `${ options.url }?sha=${ branch.name }`
+                    }), nextPageFunc);
+            }));
+
+            const github_commits = branch_commit_results.reduce((acc, list) => acc.concat(list), []);
+            const unique_commits = uniq(github_commits, item => item.sha);
+
+            return unique_commits.map(GitHubCommit);
         }
     };
 }
@@ -160,25 +142,16 @@ function GitHubCommit(value) {
 
 // PRIVATE
 
-function _requestPagedResponse(options, next_page_func, values = []) {
-    return new Promise((resolve, reject) => {
-        async(function* () {
-            try {
-                const { url, config } = options;
-                const response = yield requestPromise(url, config);
-                const chunked_values = values.concat(response.data);
+async function _requestPagedResponse(options, next_page_func, values = []) {
+    const { url, config } = options;
+    const response = await requestPromise(url, config);
+    const chunked_values = values.concat(response.data);
 
-                const next_page_url = next_page_func(response);
+    const next_page_url = next_page_func(response);
 
-                if (next_page_url) {
-                    resolve(_requestPagedResponse({ url: next_page_url, config }, next_page_func, chunked_values));
-                }
+    if (next_page_url) {
+        return _requestPagedResponse({ url: next_page_url, config }, next_page_func, chunked_values);
+    }
 
-                resolve(chunked_values);
-            }
-            catch (error) {
-                reject(error);
-            }
-        });
-    });
+    return chunked_values;
 }
