@@ -15,7 +15,20 @@ export function Velocity(format) {
     const time = _getFormatTimeValue(format);
 
     return {
-        groupCommitsByFormat: async function (commits) {
+        isDateWithinThisTimeFrame(date) {
+            const now = moment();
+            const start_of_time = moment(now).startOf(time).hours(0);
+
+            return start_of_time.isBefore(date) && now.isAfter(date);
+        },
+        isDateWithinLastTimeFrame(date) {
+            const now = moment();
+            const start_of_time = moment(now).startOf(time).hours(0);
+            const start_of_last_time = moment(start_of_time).subtract(1, `${ time }s`);
+
+            return start_of_last_time.isBefore(date) && start_of_time.isAfter(date);
+        },
+        async groupCommitsByFormat(commits) {
             const now = moment();
             const start_of_time = moment(now).startOf(time).hours(0);
             const start_of_last_time = moment(start_of_time).subtract(1, `${ time }s`);
@@ -28,7 +41,7 @@ export function Velocity(format) {
                 previous: commits_last_time
             };
         },
-        groupCommitsByDay: async function (commits) {
+        async groupCommitsByDay(commits) {
             const days_of_week = [ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ];
             const days_of_month = [ ...Array(31).keys() ].map(i => ++i);
 

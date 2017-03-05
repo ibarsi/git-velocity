@@ -52,7 +52,7 @@ function BitBucketCommits(auth) {
     return {
         isAuthorized: auth.isCredsTokenInitialized,
         authorize: auth.storeCreds,
-        getCommitsByRepo: async function(repository, owner) {
+        async getCommitsByRepo(repository, owner, takeWhile) {
             const { username, password } = await auth.getCreds();
 
             const options = {
@@ -65,7 +65,7 @@ function BitBucketCommits(auth) {
                 }
             };
 
-            const commits = await _requestPagedResponse(options, response => response.data.next);
+            const commits = await _requestPagedResponse(options, response => !response.data.values.map(BitBucketCommit).some(takeWhile) ? response.data.next : undefined);
 
             return commits.reduce((acc, value) => acc.concat(value.values), []).map(BitBucketCommit);
         }
@@ -103,7 +103,7 @@ function GitHubCommits(auth) {
     return {
         isAuthorized: auth.isCredsTokenInitialized,
         authorize: auth.storeCreds,
-        getCommitsByRepo: async function(repository, owner) {
+        async getCommitsByRepo(repository, owner, takeWhile) {
             const { username, password } = await auth.getCreds();
 
             const options = {
@@ -120,7 +120,7 @@ function GitHubCommits(auth) {
             const branch_commit_results = await Promise.all(branches.data.map(branch => {
                 return _requestPagedResponse(Object.assign({}, options, {
                         url: `${ options.url }?sha=${ branch.name }`
-                    }), nextPageFunc);
+                    }), response => !response.data.map(GitHubCommit).some(takeWhile) ? nextPageFunc(response) : undefined);
             }));
 
             const github_commits = branch_commit_results.reduce((acc, list) => acc.concat(list), []);
@@ -142,15 +142,15 @@ function GitHubCommit(value) {
 
 // PRIVATE
 
-async function _requestPagedResponse(options, next_page_func, values = []) {
+async function _requestPagedResponse(options, nextPage, values = []) {
     const { url, config } = options;
     const response = await requestPromise(url, config);
     const chunked_values = values.concat(response.data);
 
-    const next_page_url = next_page_func(response);
+    const next_page_url = nextPage(response);
 
     if (next_page_url) {
-        return _requestPagedResponse({ url: next_page_url, config }, next_page_func, chunked_values);
+        return _requestPagedResponse({ url: next_page_url, config }, nextPage, chunked_values);
     }
 
     return chunked_values;

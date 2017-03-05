@@ -42,7 +42,7 @@ export default function CommitsDashboard() {
     let layout;
 
     return {
-        render: async function(format, commits) {
+        async render(format, commits) {
             // INIT
 
             if (!dashboard) {
@@ -63,7 +63,7 @@ export default function CommitsDashboard() {
             // LISTING
 
             const commit_messages = [ ...grouped_commits.current, ...grouped_commits.previous ]
-                .map(commit => `(${ moment(commit.date).format('MMM Do') }) ${ commit.author }: ${ commit.message }`)
+                .map(commit => `(${ moment(commit.date).format('MMM Do') }) ${ commit.author }: ${ commit.message.replace('\n', ' ') }`)
                 .reverse();
 
             // VELOCITY
@@ -96,7 +96,14 @@ export default function CommitsDashboard() {
 
             layout.info.setMarkdown(info_content_formatted);
             layout.velocity.setData([ previous_commits, current_commits ]);
-            commit_messages.forEach(message => layout.listing.log(message));
+
+            // Something needs to be logged, otherwise dashboard renders completely blank :/
+            if (commit_messages.length <= 0) {
+                layout.listing.log('');
+            }
+            else {
+                commit_messages.forEach(message => layout.listing.log(message));
+            }
         }
     };
 }
