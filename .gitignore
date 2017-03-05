@@ -1,8 +1,9 @@
+# Project
+**/node_modules
+**/dist
+
 # Git
 **/.git
-
-# Static files
-**/node_modules
 
 # Node
 **/npm-debug.log
