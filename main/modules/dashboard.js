@@ -96,7 +96,14 @@ export default function CommitsDashboard() {
 
             layout.info.setMarkdown(info_content_formatted);
             layout.velocity.setData([ previous_commits, current_commits ]);
-            commit_messages.forEach(message => layout.listing.log(message));
+
+            // Something needs to be logged, otherwise dashboard renders completely blank :/
+            if (commit_messages.length <= 0) {
+                layout.listing.log('');
+            }
+            else {
+                commit_messages.forEach(message => layout.listing.log(message));
+            }
         }
     };
 }
