@@ -21,7 +21,7 @@
     "clean": "rm -rf dist && mkdir dist",
     "build": "npm run clean && babel main/ -s -D -d dist/",
     "debug": "npm run build && node --debug=12345 dist/index.js",
-    "test": "mocha main/**/*.test.js",
+    "test": "mocha main/**/*.test.js --compilers js:babel-register",
     "start": "node dist/index.js"
   },
   "author": "ibarsi",
@@ -44,9 +44,11 @@
     "babel-cli": "6.9.0",
     "babel-core": "6.9.0",
     "babel-preset-latest-minimal": "1.1.2",
+    "babel-register": "6.23.0",
     "chai": "3.5.0",
     "commitizen": "2.9.5",
     "cz-conventional-changelog": "1.2.0",
+    "lodash": "4.17.4",
     "mocha": "3.2.0",
     "semantic-release": "6.3.2"
   }
