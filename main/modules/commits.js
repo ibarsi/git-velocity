@@ -53,6 +53,8 @@ function BitBucketCommits(auth) {
         isAuthorized: auth.isCredsTokenInitialized,
         authorize: auth.storeCreds,
         async getCommitsByRepo(repository, owner, takeWhile) {
+            if (!repository || !owner) { return []; }
+
             const { username, password } = await auth.getCreds();
 
             const options = {
@@ -65,7 +67,11 @@ function BitBucketCommits(auth) {
                 }
             };
 
-            const commits = await _requestPagedResponse(options, response => !response.data.values.map(BitBucketCommit).some(takeWhile) ? response.data.next : undefined);
+            const commits = await _requestPagedResponse(options, response => {
+                if (!takeWhile) { return response.data.next; }
+
+                return !response.data.values.map(BitBucketCommit).some(takeWhile) ? response.data.next : undefined;
+            });
 
             return commits.reduce((acc, value) => acc.concat(value.values), []).map(BitBucketCommit);
         }
@@ -104,6 +110,8 @@ function GitHubCommits(auth) {
         isAuthorized: auth.isCredsTokenInitialized,
         authorize: auth.storeCreds,
         async getCommitsByRepo(repository, owner, takeWhile) {
+            if (!repository || !owner) { return []; }
+
             const { username, password } = await auth.getCreds();
 
             const options = {
@@ -120,7 +128,12 @@ function GitHubCommits(auth) {
             const branch_commit_results = await Promise.all(branches.data.map(branch => {
                 return _requestPagedResponse(Object.assign({}, options, {
                         url: `${ options.url }?sha=${ branch.name }`
-                    }), response => !response.data.map(GitHubCommit).some(takeWhile) ? nextPageFunc(response) : undefined);
+                    }),
+                    response => {
+                        if (!takeWhile) { return response.data.next; }
+
+                        return !response.data.map(GitHubCommit).some(takeWhile) ? nextPageFunc(response) : undefined;
+                    });
             }));
 
             const github_commits = branch_commit_results.reduce((acc, list) => acc.concat(list), []);

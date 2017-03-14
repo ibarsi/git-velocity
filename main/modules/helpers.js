@@ -78,5 +78,6 @@ export default {
     isFile,
     uniq,
     wrapSpinner,
+    requestPromise,
     partial
 };
