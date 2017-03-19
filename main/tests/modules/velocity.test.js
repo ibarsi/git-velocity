@@ -6,7 +6,7 @@ import { expect } from 'chai';
 import moment from 'moment';
 import { isEmpty } from 'lodash';
 
-import { FORMATS, Velocity } from './velocity.js';
+import { FORMATS, Velocity } from '../../modules/velocity.js';
 
 const velocity_week = Velocity(FORMATS.WEEK);
 const velocity_month = Velocity(FORMATS.MONTH);

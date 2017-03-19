@@ -5,7 +5,7 @@
 import { expect } from 'chai';
 import { isEmpty, isArray } from 'lodash';
 
-import { TYPES, Commits } from './commits.js';
+import { TYPES, Commits } from '../../modules/commits.js';
 
 const bitbucket_commits = Commits(TYPES.BITBUCKET);
 

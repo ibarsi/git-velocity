@@ -5,7 +5,7 @@
 import { expect } from 'chai';
 import { isEmpty, isArray } from 'lodash';
 
-import { isFile, uniq, wrapSpinner, partial } from './helpers.js';
+import { isFile, uniq, wrapSpinner, partial } from '../../modules/helpers.js';
 
 describe('Helpers', () => {
     describe('isFile', () => {
