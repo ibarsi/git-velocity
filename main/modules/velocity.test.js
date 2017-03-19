@@ -31,6 +31,26 @@ const commits = [
 ];
 
 describe('Velocity', () => {
+    describe('getFormat', () => {
+        it(`${ FORMATS.WEEK }: Returns correct format.`, done => {
+            const result = velocity_week.getFormat();
+
+            expect(result).to.equal(FORMATS.WEEK);
+
+            done();
+        });
+
+        /* ========= */
+
+        it(`${ FORMATS.MONTH }: Returns correct format.`, done => {
+            const result = velocity_month.getFormat();
+
+            expect(result).to.equal(FORMATS.MONTH);
+
+            done();
+        });
+    });
+
     describe('isDateWithinThisTimeFrame', () => {
         it(`${ FORMATS.WEEK }: True when date within time frame.`, done => {
             const value = moment(start_of_week).add(1, 'minute');
