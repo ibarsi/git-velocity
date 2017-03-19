@@ -3,13 +3,7 @@
 ================================================== */
 
 import fs from 'fs';
-import req from 'request';
 import CLI from 'clui';
-
-const request = req.defaults({
-    encoding: 'utf8',
-    json: true
-});
 
 // PUBLIC
 
@@ -46,26 +40,6 @@ export function wrapSpinner(promise, message = '') {
         promise(...args)
             .then(result => { spinner.stop(); resolve(result); })
             .catch(error => { spinner.stop(); reject(error); });
-    });
-}
-
-export function requestPromise(url, config) {
-    return new Promise((resolve, reject) => {
-        request.get(url, config)
-            .on('response', response => {
-                if (response.statusCode !== 200) { reject(new Error(response.statusMessage)); }
-
-                let chunk = '';
-
-                response.on('data', result => { chunk += result; });
-
-                response.on('end', () => {
-                    resolve({
-                        data: JSON.parse(chunk),
-                        headers: response.headers
-                    });
-                });
-            });
     });
 }
 

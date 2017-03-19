@@ -38,7 +38,7 @@
     "figlet": "1.2.0",
     "inquirer": "3.0.1",
     "moment": "2.17.1",
-    "request": "2.79.0"
+    "node-fetch": "1.6.3"
   },
   "devDependencies": {
     "babel-cli": "6.9.0",
