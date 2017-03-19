@@ -60,8 +60,8 @@ export default function CommitsDashboard(velocity) {
             // LISTING
 
             const commit_messages = [ ...grouped_commits.current, ...grouped_commits.previous ]
-                .map(commit => `(${ moment(commit.date).format('MMM Do') }) ${ commit.author }: ${ commit.message.replace('\n', ' ') }`)
-                .reverse();
+                .sort((a, b) => a.date > b.date)
+                .map(commit => `(${ moment(commit.date).format('MMM Do') }) ${ commit.author }: ${ commit.message.replace('\n', ' ') }`);
 
             // VELOCITY
 
