@@ -2,8 +2,6 @@ import { screen } from 'blessed';
 import { grid, markdown, log, line } from 'blessed-contrib';
 import moment from 'moment';
 
-import { Velocity } from './velocity';
-
 // SETTINGS
 
 const info_content =
@@ -37,12 +35,12 @@ const line_settings = {
 
 // PUBLIC
 
-export default function CommitsDashboard() {
+export default function CommitsDashboard(velocity) {
     let dashboard;
     let layout;
 
     return {
-        async render(format, commits) {
+        async render(commits) {
             // INIT
 
             if (!dashboard) {
@@ -50,21 +48,20 @@ export default function CommitsDashboard() {
                 layout = _initLayout(dashboard);
             }
 
-            const velocity = Velocity(format);
             const grouped_commits = await velocity.groupCommitsByFormat(commits);
 
             // INFO
 
             const info_content_formatted = info_content
-                .replace('{{format}}', format)
+                .replace('{{format}}', velocity.getFormat())
                 .replace('{{current_commits}}', grouped_commits.current.length)
                 .replace('{{previous_commits}}', grouped_commits.previous.length);
 
             // LISTING
 
             const commit_messages = [ ...grouped_commits.current, ...grouped_commits.previous ]
-                .map(commit => `(${ moment(commit.date).format('MMM Do') }) ${ commit.author }: ${ commit.message.replace('\n', ' ') }`)
-                .reverse();
+                .sort((a, b) => a.date > b.date)
+                .map(commit => `(${ moment(commit.date).format('MMM Do') }) ${ commit.author }: ${ commit.message.replace('\n', ' ') }`);
 
             // VELOCITY
 
