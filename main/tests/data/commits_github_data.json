@@ -1,0 +1,2152 @@
+[
+    {
+        "sha": "3415da538a15b2b7179611c0f3a700faeaa954ff",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi92@gmail.com",
+                "date": "2017-03-07T01:34:23Z"
+            },
+            "committer": {
+                "name": "GitHub",
+                "email": "noreply@github.com",
+                "date": "2017-03-07T01:34:23Z"
+            },
+            "message": "Merge pull request #21 from ibarsi/develop\n\nfix(config): Added `.npmconfig` to ignore source files and ensure dis…",
+            "tree": {
+                "sha": "4ba3934f170934eb4a70c112440bd87e7f1c4884",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/4ba3934f170934eb4a70c112440bd87e7f1c4884"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/3415da538a15b2b7179611c0f3a700faeaa954ff",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/3415da538a15b2b7179611c0f3a700faeaa954ff",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/3415da538a15b2b7179611c0f3a700faeaa954ff",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/3415da538a15b2b7179611c0f3a700faeaa954ff/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "web-flow",
+            "id": 19864447,
+            "avatar_url": "https://avatars0.githubusercontent.com/u/19864447?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/web-flow",
+            "html_url": "https://github.com/web-flow",
+            "followers_url": "https://api.github.com/users/web-flow/followers",
+            "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+            "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+            "organizations_url": "https://api.github.com/users/web-flow/orgs",
+            "repos_url": "https://api.github.com/users/web-flow/repos",
+            "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/web-flow/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "4485751f77a141acaf484037df95e5c9aa7201c6",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/4485751f77a141acaf484037df95e5c9aa7201c6",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/4485751f77a141acaf484037df95e5c9aa7201c6"
+            },
+            {
+                "sha": "a0651300153dbd8562022c3d9f8a23ab3874ee13",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/a0651300153dbd8562022c3d9f8a23ab3874ee13",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/a0651300153dbd8562022c3d9f8a23ab3874ee13"
+            }
+        ]
+    },
+    {
+        "sha": "a0651300153dbd8562022c3d9f8a23ab3874ee13",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-07T01:31:21Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-07T01:31:21Z"
+            },
+            "message": "fix(config): Added `.npmconfig` to ignore source files and ensure dist files are published.\n\ncloses #20",
+            "tree": {
+                "sha": "4ba3934f170934eb4a70c112440bd87e7f1c4884",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/4ba3934f170934eb4a70c112440bd87e7f1c4884"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/a0651300153dbd8562022c3d9f8a23ab3874ee13",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/a0651300153dbd8562022c3d9f8a23ab3874ee13",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/a0651300153dbd8562022c3d9f8a23ab3874ee13",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/a0651300153dbd8562022c3d9f8a23ab3874ee13/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "4485751f77a141acaf484037df95e5c9aa7201c6",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/4485751f77a141acaf484037df95e5c9aa7201c6",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/4485751f77a141acaf484037df95e5c9aa7201c6"
+            }
+        ]
+    },
+    {
+        "sha": "4485751f77a141acaf484037df95e5c9aa7201c6",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi92@gmail.com",
+                "date": "2017-03-05T21:57:13Z"
+            },
+            "committer": {
+                "name": "GitHub",
+                "email": "noreply@github.com",
+                "date": "2017-03-05T21:57:13Z"
+            },
+            "message": "Merge pull request #18 from ibarsi/develop\n\nDevelop",
+            "tree": {
+                "sha": "da79321a407b3a8552888d3f0c9381165e26a938",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/da79321a407b3a8552888d3f0c9381165e26a938"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/4485751f77a141acaf484037df95e5c9aa7201c6",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/4485751f77a141acaf484037df95e5c9aa7201c6",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/4485751f77a141acaf484037df95e5c9aa7201c6",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/4485751f77a141acaf484037df95e5c9aa7201c6/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "web-flow",
+            "id": 19864447,
+            "avatar_url": "https://avatars0.githubusercontent.com/u/19864447?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/web-flow",
+            "html_url": "https://github.com/web-flow",
+            "followers_url": "https://api.github.com/users/web-flow/followers",
+            "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+            "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+            "organizations_url": "https://api.github.com/users/web-flow/orgs",
+            "repos_url": "https://api.github.com/users/web-flow/repos",
+            "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/web-flow/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "a24578bbead1ae1d4ff5e135fb898c04dc1f9567",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/a24578bbead1ae1d4ff5e135fb898c04dc1f9567",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/a24578bbead1ae1d4ff5e135fb898c04dc1f9567"
+            },
+            {
+                "sha": "7d1eca803ff363e10cff16aed0b46d84a3f7c109",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/7d1eca803ff363e10cff16aed0b46d84a3f7c109",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/7d1eca803ff363e10cff16aed0b46d84a3f7c109"
+            }
+        ]
+    },
+    {
+        "sha": "7d1eca803ff363e10cff16aed0b46d84a3f7c109",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-05T21:41:59Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-05T21:41:59Z"
+            },
+            "message": "Merge branch 'master' into develop\n\n* master:",
+            "tree": {
+                "sha": "da79321a407b3a8552888d3f0c9381165e26a938",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/da79321a407b3a8552888d3f0c9381165e26a938"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/7d1eca803ff363e10cff16aed0b46d84a3f7c109",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/7d1eca803ff363e10cff16aed0b46d84a3f7c109",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/7d1eca803ff363e10cff16aed0b46d84a3f7c109",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/7d1eca803ff363e10cff16aed0b46d84a3f7c109/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "ba2052d65f4e7cf24f17792478a3367062846c19",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/ba2052d65f4e7cf24f17792478a3367062846c19",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/ba2052d65f4e7cf24f17792478a3367062846c19"
+            },
+            {
+                "sha": "a24578bbead1ae1d4ff5e135fb898c04dc1f9567",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/a24578bbead1ae1d4ff5e135fb898c04dc1f9567",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/a24578bbead1ae1d4ff5e135fb898c04dc1f9567"
+            }
+        ]
+    },
+    {
+        "sha": "ba2052d65f4e7cf24f17792478a3367062846c19",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-05T21:41:36Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-05T21:41:36Z"
+            },
+            "message": "fix(auth): Auth IO now platform agnostic.\n\n- Updated `.gitignore`, added /dist folder.\n\ncloses #13",
+            "tree": {
+                "sha": "da79321a407b3a8552888d3f0c9381165e26a938",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/da79321a407b3a8552888d3f0c9381165e26a938"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/ba2052d65f4e7cf24f17792478a3367062846c19",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/ba2052d65f4e7cf24f17792478a3367062846c19",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/ba2052d65f4e7cf24f17792478a3367062846c19",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/ba2052d65f4e7cf24f17792478a3367062846c19/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "9381a66957211003546b24b1815a4f2d5af71af3",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/9381a66957211003546b24b1815a4f2d5af71af3",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/9381a66957211003546b24b1815a4f2d5af71af3"
+            }
+        ]
+    },
+    {
+        "sha": "a24578bbead1ae1d4ff5e135fb898c04dc1f9567",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi92@gmail.com",
+                "date": "2017-03-05T21:09:17Z"
+            },
+            "committer": {
+                "name": "GitHub",
+                "email": "noreply@github.com",
+                "date": "2017-03-05T21:09:17Z"
+            },
+            "message": "Merge pull request #16 from ibarsi/develop\n\nDevelop",
+            "tree": {
+                "sha": "6c4c8d5edd3f902f9a95705e1b3d4ef97d67e013",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/6c4c8d5edd3f902f9a95705e1b3d4ef97d67e013"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/a24578bbead1ae1d4ff5e135fb898c04dc1f9567",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/a24578bbead1ae1d4ff5e135fb898c04dc1f9567",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/a24578bbead1ae1d4ff5e135fb898c04dc1f9567",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/a24578bbead1ae1d4ff5e135fb898c04dc1f9567/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "web-flow",
+            "id": 19864447,
+            "avatar_url": "https://avatars0.githubusercontent.com/u/19864447?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/web-flow",
+            "html_url": "https://github.com/web-flow",
+            "followers_url": "https://api.github.com/users/web-flow/followers",
+            "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+            "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+            "organizations_url": "https://api.github.com/users/web-flow/orgs",
+            "repos_url": "https://api.github.com/users/web-flow/repos",
+            "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/web-flow/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "adfd6c04e4ea9c08cf34e00c801ab7ed8e89d0c4",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/adfd6c04e4ea9c08cf34e00c801ab7ed8e89d0c4",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/adfd6c04e4ea9c08cf34e00c801ab7ed8e89d0c4"
+            },
+            {
+                "sha": "9381a66957211003546b24b1815a4f2d5af71af3",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/9381a66957211003546b24b1815a4f2d5af71af3",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/9381a66957211003546b24b1815a4f2d5af71af3"
+            }
+        ]
+    },
+    {
+        "sha": "9381a66957211003546b24b1815a4f2d5af71af3",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-05T21:07:49Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-05T21:07:49Z"
+            },
+            "message": "fix(dashboard): New lines in commit messages are now displayed in the commit log.\n\ncloses #17",
+            "tree": {
+                "sha": "6c4c8d5edd3f902f9a95705e1b3d4ef97d67e013",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/6c4c8d5edd3f902f9a95705e1b3d4ef97d67e013"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/9381a66957211003546b24b1815a4f2d5af71af3",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/9381a66957211003546b24b1815a4f2d5af71af3",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/9381a66957211003546b24b1815a4f2d5af71af3",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/9381a66957211003546b24b1815a4f2d5af71af3/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "48167c2cbbd90a06743a42e84eaacb4f26c3ce98",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/48167c2cbbd90a06743a42e84eaacb4f26c3ce98",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/48167c2cbbd90a06743a42e84eaacb4f26c3ce98"
+            }
+        ]
+    },
+    {
+        "sha": "48167c2cbbd90a06743a42e84eaacb4f26c3ce98",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-05T21:03:14Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-05T21:03:14Z"
+            },
+            "message": "perf(commits): Commit request paging now gets cut off once commit dates pass the current format's ra\n\ncloses #5",
+            "tree": {
+                "sha": "bf3830c54951f013a5351bee3158c7522ca78fe0",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/bf3830c54951f013a5351bee3158c7522ca78fe0"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/48167c2cbbd90a06743a42e84eaacb4f26c3ce98",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/48167c2cbbd90a06743a42e84eaacb4f26c3ce98",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/48167c2cbbd90a06743a42e84eaacb4f26c3ce98",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/48167c2cbbd90a06743a42e84eaacb4f26c3ce98/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "db8801ebb5495d9a37f86309cd95d5e0db9b389e",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/db8801ebb5495d9a37f86309cd95d5e0db9b389e",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/db8801ebb5495d9a37f86309cd95d5e0db9b389e"
+            }
+        ]
+    },
+    {
+        "sha": "db8801ebb5495d9a37f86309cd95d5e0db9b389e",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-04T21:29:34Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-04T21:29:34Z"
+            },
+            "message": "refactor(merge): Resolved merge conflicts with [develop].",
+            "tree": {
+                "sha": "0110051bb4629a2247db4b2f4b4b4b38a0b907af",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/0110051bb4629a2247db4b2f4b4b4b38a0b907af"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/db8801ebb5495d9a37f86309cd95d5e0db9b389e",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/db8801ebb5495d9a37f86309cd95d5e0db9b389e",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/db8801ebb5495d9a37f86309cd95d5e0db9b389e",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/db8801ebb5495d9a37f86309cd95d5e0db9b389e/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "fc77e7dcf0bf9c3859b8c6f2a2967a0c9ce7c08e",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/fc77e7dcf0bf9c3859b8c6f2a2967a0c9ce7c08e",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/fc77e7dcf0bf9c3859b8c6f2a2967a0c9ce7c08e"
+            },
+            {
+                "sha": "f263acfbdc2493c1c7b8974665f3ce979119450e",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/f263acfbdc2493c1c7b8974665f3ce979119450e",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/f263acfbdc2493c1c7b8974665f3ce979119450e"
+            }
+        ]
+    },
+    {
+        "sha": "f263acfbdc2493c1c7b8974665f3ce979119450e",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-04T21:25:18Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-04T21:25:18Z"
+            },
+            "message": "refactor(all): Swapped verbose async function properties to shorthand syntax.",
+            "tree": {
+                "sha": "1f8349aa13664ffb989c0e93e2ddf0b0618fcf9b",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/1f8349aa13664ffb989c0e93e2ddf0b0618fcf9b"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/f263acfbdc2493c1c7b8974665f3ce979119450e",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/f263acfbdc2493c1c7b8974665f3ce979119450e",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/f263acfbdc2493c1c7b8974665f3ce979119450e",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/f263acfbdc2493c1c7b8974665f3ce979119450e/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "c6bf49993c6d5c36a8331bac01d78af2805af39a",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/c6bf49993c6d5c36a8331bac01d78af2805af39a",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/c6bf49993c6d5c36a8331bac01d78af2805af39a"
+            }
+        ]
+    },
+    {
+        "sha": "c6bf49993c6d5c36a8331bac01d78af2805af39a",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-04T17:16:03Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-04T17:16:03Z"
+            },
+            "message": "build(babel): Removed babel yearly es6 modules for node-friendly \"latest-minimal\", removed deps no l",
+            "tree": {
+                "sha": "de1d594533fe194999b7ab84e3dbd86f64f39724",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/de1d594533fe194999b7ab84e3dbd86f64f39724"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/c6bf49993c6d5c36a8331bac01d78af2805af39a",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/c6bf49993c6d5c36a8331bac01d78af2805af39a",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/c6bf49993c6d5c36a8331bac01d78af2805af39a",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/c6bf49993c6d5c36a8331bac01d78af2805af39a/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "adfd6c04e4ea9c08cf34e00c801ab7ed8e89d0c4",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/adfd6c04e4ea9c08cf34e00c801ab7ed8e89d0c4",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/adfd6c04e4ea9c08cf34e00c801ab7ed8e89d0c4"
+            }
+        ]
+    },
+    {
+        "sha": "fc77e7dcf0bf9c3859b8c6f2a2967a0c9ce7c08e",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-04T17:00:25Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-04T17:00:25Z"
+            },
+            "message": "refactor(merge): Resolved merge conflicts with [develop].",
+            "tree": {
+                "sha": "2e7ee7479968f240295bee1f3c36e8a7d00d5808",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/2e7ee7479968f240295bee1f3c36e8a7d00d5808"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/fc77e7dcf0bf9c3859b8c6f2a2967a0c9ce7c08e",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/fc77e7dcf0bf9c3859b8c6f2a2967a0c9ce7c08e",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/fc77e7dcf0bf9c3859b8c6f2a2967a0c9ce7c08e",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/fc77e7dcf0bf9c3859b8c6f2a2967a0c9ce7c08e/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "913f5257ef7c0f25fd36a9626852b2c144127378",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/913f5257ef7c0f25fd36a9626852b2c144127378",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/913f5257ef7c0f25fd36a9626852b2c144127378"
+            },
+            {
+                "sha": "7885ce05f1ff8d2a63b6f7c75a681b62344a60a5",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/7885ce05f1ff8d2a63b6f7c75a681b62344a60a5",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/7885ce05f1ff8d2a63b6f7c75a681b62344a60a5"
+            }
+        ]
+    },
+    {
+        "sha": "adfd6c04e4ea9c08cf34e00c801ab7ed8e89d0c4",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi92@gmail.com",
+                "date": "2017-03-04T16:55:55Z"
+            },
+            "committer": {
+                "name": "GitHub",
+                "email": "noreply@github.com",
+                "date": "2017-03-04T16:55:55Z"
+            },
+            "message": "Merge pull request #15 from ibarsi/develop\n\nDevelop",
+            "tree": {
+                "sha": "70791d5ccf90e2fd787aef565f2049b3980573a7",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/70791d5ccf90e2fd787aef565f2049b3980573a7"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/adfd6c04e4ea9c08cf34e00c801ab7ed8e89d0c4",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/adfd6c04e4ea9c08cf34e00c801ab7ed8e89d0c4",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/adfd6c04e4ea9c08cf34e00c801ab7ed8e89d0c4",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/adfd6c04e4ea9c08cf34e00c801ab7ed8e89d0c4/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "web-flow",
+            "id": 19864447,
+            "avatar_url": "https://avatars0.githubusercontent.com/u/19864447?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/web-flow",
+            "html_url": "https://github.com/web-flow",
+            "followers_url": "https://api.github.com/users/web-flow/followers",
+            "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+            "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+            "organizations_url": "https://api.github.com/users/web-flow/orgs",
+            "repos_url": "https://api.github.com/users/web-flow/repos",
+            "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/web-flow/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "4d3ba6e0ccad2a411ce462756eabc60d608e5298",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/4d3ba6e0ccad2a411ce462756eabc60d608e5298",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/4d3ba6e0ccad2a411ce462756eabc60d608e5298"
+            },
+            {
+                "sha": "7885ce05f1ff8d2a63b6f7c75a681b62344a60a5",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/7885ce05f1ff8d2a63b6f7c75a681b62344a60a5",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/7885ce05f1ff8d2a63b6f7c75a681b62344a60a5"
+            }
+        ]
+    },
+    {
+        "sha": "7885ce05f1ff8d2a63b6f7c75a681b62344a60a5",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-04T16:51:25Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-04T16:51:25Z"
+            },
+            "message": "refactor(all): Implemented babel es2016 + es2017, swapped nested promises and custom \"async\" impleme",
+            "tree": {
+                "sha": "70791d5ccf90e2fd787aef565f2049b3980573a7",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/70791d5ccf90e2fd787aef565f2049b3980573a7"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/7885ce05f1ff8d2a63b6f7c75a681b62344a60a5",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/7885ce05f1ff8d2a63b6f7c75a681b62344a60a5",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/7885ce05f1ff8d2a63b6f7c75a681b62344a60a5",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/7885ce05f1ff8d2a63b6f7c75a681b62344a60a5/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "87026716988c4afffab91cba5cef4f0e6dd27a64",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/87026716988c4afffab91cba5cef4f0e6dd27a64",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/87026716988c4afffab91cba5cef4f0e6dd27a64"
+            }
+        ]
+    },
+    {
+        "sha": "87026716988c4afffab91cba5cef4f0e6dd27a64",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-03T20:22:19Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-03T20:22:19Z"
+            },
+            "message": "refactor(auth, velocity): Replaced partially applied functions in favour of including functions dire",
+            "tree": {
+                "sha": "4bb319b66e549397931024fbb75934cf2e4cebfd",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/4bb319b66e549397931024fbb75934cf2e4cebfd"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/87026716988c4afffab91cba5cef4f0e6dd27a64",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/87026716988c4afffab91cba5cef4f0e6dd27a64",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/87026716988c4afffab91cba5cef4f0e6dd27a64",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/87026716988c4afffab91cba5cef4f0e6dd27a64/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "80e469390b6767672876ca428ccd0e0223a5fd85",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/80e469390b6767672876ca428ccd0e0223a5fd85",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/80e469390b6767672876ca428ccd0e0223a5fd85"
+            }
+        ]
+    },
+    {
+        "sha": "913f5257ef7c0f25fd36a9626852b2c144127378",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-03T02:28:31Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-03T02:28:31Z"
+            },
+            "message": "Merge branch 'develop' into bug-12\n\n* develop:\n  fix(dashboard): Display merge commits in the server log and limit to only those commits that are als",
+            "tree": {
+                "sha": "5d63de933ff6b29f0d2c5f47fd03f8904110cce0",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/5d63de933ff6b29f0d2c5f47fd03f8904110cce0"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/913f5257ef7c0f25fd36a9626852b2c144127378",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/913f5257ef7c0f25fd36a9626852b2c144127378",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/913f5257ef7c0f25fd36a9626852b2c144127378",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/913f5257ef7c0f25fd36a9626852b2c144127378/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "f5f7a044ff2faac4ece53fb25550df5dc08680d4",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/f5f7a044ff2faac4ece53fb25550df5dc08680d4",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/f5f7a044ff2faac4ece53fb25550df5dc08680d4"
+            },
+            {
+                "sha": "80e469390b6767672876ca428ccd0e0223a5fd85",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/80e469390b6767672876ca428ccd0e0223a5fd85",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/80e469390b6767672876ca428ccd0e0223a5fd85"
+            }
+        ]
+    },
+    {
+        "sha": "80e469390b6767672876ca428ccd0e0223a5fd85",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-03T02:27:35Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-03T02:27:35Z"
+            },
+            "message": "fix(dashboard): Display merge commits in the server log and limit to only those commits that are als\n\ncloses #14",
+            "tree": {
+                "sha": "cd61e29923e8a6504ec8b587b6eed60c46a9050d",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/cd61e29923e8a6504ec8b587b6eed60c46a9050d"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/80e469390b6767672876ca428ccd0e0223a5fd85",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/80e469390b6767672876ca428ccd0e0223a5fd85",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/80e469390b6767672876ca428ccd0e0223a5fd85",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/80e469390b6767672876ca428ccd0e0223a5fd85/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "6583839726d14667627db6cd59e6e247b182eb7a",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/6583839726d14667627db6cd59e6e247b182eb7a",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/6583839726d14667627db6cd59e6e247b182eb7a"
+            }
+        ]
+    },
+    {
+        "sha": "f5f7a044ff2faac4ece53fb25550df5dc08680d4",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-03T02:15:51Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-03-03T02:15:51Z"
+            },
+            "message": "fix(commits): Implemented cutoff request paging for BitBucket commits.\n\n#12",
+            "tree": {
+                "sha": "6e7c7d1ada58d386e6378367591a088bcea37580",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/6e7c7d1ada58d386e6378367591a088bcea37580"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/f5f7a044ff2faac4ece53fb25550df5dc08680d4",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/f5f7a044ff2faac4ece53fb25550df5dc08680d4",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/f5f7a044ff2faac4ece53fb25550df5dc08680d4",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/f5f7a044ff2faac4ece53fb25550df5dc08680d4/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "6583839726d14667627db6cd59e6e247b182eb7a",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/6583839726d14667627db6cd59e6e247b182eb7a",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/6583839726d14667627db6cd59e6e247b182eb7a"
+            }
+        ]
+    },
+    {
+        "sha": "4d3ba6e0ccad2a411ce462756eabc60d608e5298",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi92@gmail.com",
+                "date": "2017-02-21T00:04:49Z"
+            },
+            "committer": {
+                "name": "GitHub",
+                "email": "noreply@github.com",
+                "date": "2017-02-21T00:04:49Z"
+            },
+            "message": "Merge pull request #10 from ibarsi/develop\n\nDevelop",
+            "tree": {
+                "sha": "68a86c4171f54f9b8cc077579182e1f1b53412c5",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/68a86c4171f54f9b8cc077579182e1f1b53412c5"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/4d3ba6e0ccad2a411ce462756eabc60d608e5298",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/4d3ba6e0ccad2a411ce462756eabc60d608e5298",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/4d3ba6e0ccad2a411ce462756eabc60d608e5298",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/4d3ba6e0ccad2a411ce462756eabc60d608e5298/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "web-flow",
+            "id": 19864447,
+            "avatar_url": "https://avatars0.githubusercontent.com/u/19864447?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/web-flow",
+            "html_url": "https://github.com/web-flow",
+            "followers_url": "https://api.github.com/users/web-flow/followers",
+            "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+            "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+            "organizations_url": "https://api.github.com/users/web-flow/orgs",
+            "repos_url": "https://api.github.com/users/web-flow/repos",
+            "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/web-flow/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "98f0b145b285453e07898bc720d50ed332025d88",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/98f0b145b285453e07898bc720d50ed332025d88",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/98f0b145b285453e07898bc720d50ed332025d88"
+            },
+            {
+                "sha": "6583839726d14667627db6cd59e6e247b182eb7a",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/6583839726d14667627db6cd59e6e247b182eb7a",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/6583839726d14667627db6cd59e6e247b182eb7a"
+            }
+        ]
+    },
+    {
+        "sha": "6583839726d14667627db6cd59e6e247b182eb7a",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-21T00:03:10Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-21T00:03:10Z"
+            },
+            "message": "style(index): Renamed some vars, adjusted spacing.",
+            "tree": {
+                "sha": "68a86c4171f54f9b8cc077579182e1f1b53412c5",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/68a86c4171f54f9b8cc077579182e1f1b53412c5"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/6583839726d14667627db6cd59e6e247b182eb7a",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/6583839726d14667627db6cd59e6e247b182eb7a",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/6583839726d14667627db6cd59e6e247b182eb7a",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/6583839726d14667627db6cd59e6e247b182eb7a/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "9e301efd93c93b27abd02ee2e7081f9c4d181f0a",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/9e301efd93c93b27abd02ee2e7081f9c4d181f0a",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/9e301efd93c93b27abd02ee2e7081f9c4d181f0a"
+            }
+        ]
+    },
+    {
+        "sha": "9e301efd93c93b27abd02ee2e7081f9c4d181f0a",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-20T23:36:22Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-20T23:36:22Z"
+            },
+            "message": "refactor(commits): Moved auth instatiation outside of commit constructors, adhearing to DIP.",
+            "tree": {
+                "sha": "21e6126089691f62bc1a7b3f63145e7b532ee254",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/21e6126089691f62bc1a7b3f63145e7b532ee254"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/9e301efd93c93b27abd02ee2e7081f9c4d181f0a",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/9e301efd93c93b27abd02ee2e7081f9c4d181f0a",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/9e301efd93c93b27abd02ee2e7081f9c4d181f0a",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/9e301efd93c93b27abd02ee2e7081f9c4d181f0a/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "4c96b028d9206b7cf196ac60ca2c3283cb0ffc61",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/4c96b028d9206b7cf196ac60ca2c3283cb0ffc61",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/4c96b028d9206b7cf196ac60ca2c3283cb0ffc61"
+            }
+        ]
+    },
+    {
+        "sha": "4c96b028d9206b7cf196ac60ca2c3283cb0ffc61",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-20T23:27:24Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-20T23:27:24Z"
+            },
+            "message": "refactor(commits): Extracted auth logic/concerns into separate file, adhearing to SRP.",
+            "tree": {
+                "sha": "a062e3835f0fe014c292775a32427b2c72d6a927",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/a062e3835f0fe014c292775a32427b2c72d6a927"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/4c96b028d9206b7cf196ac60ca2c3283cb0ffc61",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/4c96b028d9206b7cf196ac60ca2c3283cb0ffc61",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/4c96b028d9206b7cf196ac60ca2c3283cb0ffc61",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/4c96b028d9206b7cf196ac60ca2c3283cb0ffc61/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "53eb38576892c1f1f8426d389fc8381019ca7f12",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/53eb38576892c1f1f8426d389fc8381019ca7f12",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/53eb38576892c1f1f8426d389fc8381019ca7f12"
+            }
+        ]
+    },
+    {
+        "sha": "53eb38576892c1f1f8426d389fc8381019ca7f12",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-20T23:13:07Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-20T23:13:07Z"
+            },
+            "message": "refactor(commits): Combined request pagination logic functions to promote DRY principle, adding next",
+            "tree": {
+                "sha": "29b0b9a788b63dffcaf082b488ecfe85f154b48e",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/29b0b9a788b63dffcaf082b488ecfe85f154b48e"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/53eb38576892c1f1f8426d389fc8381019ca7f12",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/53eb38576892c1f1f8426d389fc8381019ca7f12",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/53eb38576892c1f1f8426d389fc8381019ca7f12",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/53eb38576892c1f1f8426d389fc8381019ca7f12/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "c30f444efc6c7a37b29fd42c22d1c59ee4cffe24",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/c30f444efc6c7a37b29fd42c22d1c59ee4cffe24",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/c30f444efc6c7a37b29fd42c22d1c59ee4cffe24"
+            }
+        ]
+    },
+    {
+        "sha": "c30f444efc6c7a37b29fd42c22d1c59ee4cffe24",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-20T23:00:52Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-20T23:00:52Z"
+            },
+            "message": "refactor(commits): Created factory function to separate logic instantiation logic between GitHub and",
+            "tree": {
+                "sha": "b012a602fd2b34e8b1f01b08b5926b6624682684",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/b012a602fd2b34e8b1f01b08b5926b6624682684"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/c30f444efc6c7a37b29fd42c22d1c59ee4cffe24",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/c30f444efc6c7a37b29fd42c22d1c59ee4cffe24",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/c30f444efc6c7a37b29fd42c22d1c59ee4cffe24",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/c30f444efc6c7a37b29fd42c22d1c59ee4cffe24/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "c33c81aa65a4420afc56eae0ab6df011c5c9f5b6",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/c33c81aa65a4420afc56eae0ab6df011c5c9f5b6",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/c33c81aa65a4420afc56eae0ab6df011c5c9f5b6"
+            }
+        ]
+    },
+    {
+        "sha": "98f0b145b285453e07898bc720d50ed332025d88",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi92@gmail.com",
+                "date": "2017-02-20T18:27:16Z"
+            },
+            "committer": {
+                "name": "GitHub",
+                "email": "noreply@github.com",
+                "date": "2017-02-20T18:27:16Z"
+            },
+            "message": "Merge pull request #9 from ibarsi/develop\n\nDevelop",
+            "tree": {
+                "sha": "313e82ecab2aadf831ba29db6905711a0a42e977",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/313e82ecab2aadf831ba29db6905711a0a42e977"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/98f0b145b285453e07898bc720d50ed332025d88",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/98f0b145b285453e07898bc720d50ed332025d88",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/98f0b145b285453e07898bc720d50ed332025d88",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/98f0b145b285453e07898bc720d50ed332025d88/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "web-flow",
+            "id": 19864447,
+            "avatar_url": "https://avatars0.githubusercontent.com/u/19864447?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/web-flow",
+            "html_url": "https://github.com/web-flow",
+            "followers_url": "https://api.github.com/users/web-flow/followers",
+            "following_url": "https://api.github.com/users/web-flow/following{/other_user}",
+            "gists_url": "https://api.github.com/users/web-flow/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/web-flow/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/web-flow/subscriptions",
+            "organizations_url": "https://api.github.com/users/web-flow/orgs",
+            "repos_url": "https://api.github.com/users/web-flow/repos",
+            "events_url": "https://api.github.com/users/web-flow/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/web-flow/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "c5bd76bbec3c364da31abe9c6f49cc24f5a1afd9",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/c5bd76bbec3c364da31abe9c6f49cc24f5a1afd9",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/c5bd76bbec3c364da31abe9c6f49cc24f5a1afd9"
+            },
+            {
+                "sha": "c33c81aa65a4420afc56eae0ab6df011c5c9f5b6",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/c33c81aa65a4420afc56eae0ab6df011c5c9f5b6",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/c33c81aa65a4420afc56eae0ab6df011c5c9f5b6"
+            }
+        ]
+    },
+    {
+        "sha": "c33c81aa65a4420afc56eae0ab6df011c5c9f5b6",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-20T18:24:10Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-20T18:24:10Z"
+            },
+            "message": "fix(dashboard): Remove reference to `Cmd-C` key combo.\n\ncloses #8",
+            "tree": {
+                "sha": "313e82ecab2aadf831ba29db6905711a0a42e977",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/313e82ecab2aadf831ba29db6905711a0a42e977"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/c33c81aa65a4420afc56eae0ab6df011c5c9f5b6",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/c33c81aa65a4420afc56eae0ab6df011c5c9f5b6",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/c33c81aa65a4420afc56eae0ab6df011c5c9f5b6",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/c33c81aa65a4420afc56eae0ab6df011c5c9f5b6/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "158369041733f1eaaa3098ccbc5946c664110389",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/158369041733f1eaaa3098ccbc5946c664110389",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/158369041733f1eaaa3098ccbc5946c664110389"
+            }
+        ]
+    },
+    {
+        "sha": "158369041733f1eaaa3098ccbc5946c664110389",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-20T18:22:34Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-20T18:22:34Z"
+            },
+            "message": "fix(commits): GitHub commits are now pulled from all branches.\n\ncloses #4",
+            "tree": {
+                "sha": "4352eb4da3881b7396666e8140614cd8222f9ee7",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/4352eb4da3881b7396666e8140614cd8222f9ee7"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/158369041733f1eaaa3098ccbc5946c664110389",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/158369041733f1eaaa3098ccbc5946c664110389",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/158369041733f1eaaa3098ccbc5946c664110389",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/158369041733f1eaaa3098ccbc5946c664110389/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "5b400c7744dc51c108a62e50f4f6d2339dc7ab03",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/5b400c7744dc51c108a62e50f4f6d2339dc7ab03",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/5b400c7744dc51c108a62e50f4f6d2339dc7ab03"
+            }
+        ]
+    },
+    {
+        "sha": "5b400c7744dc51c108a62e50f4f6d2339dc7ab03",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-16T01:26:47Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-16T01:26:47Z"
+            },
+            "message": "fix(index): Added support for both string and object `package.json` repository formats.\n\ncloses #7",
+            "tree": {
+                "sha": "67ae541b402c9924d1df71b0d3951dbbbe05b00d",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/67ae541b402c9924d1df71b0d3951dbbbe05b00d"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/5b400c7744dc51c108a62e50f4f6d2339dc7ab03",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/5b400c7744dc51c108a62e50f4f6d2339dc7ab03",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/5b400c7744dc51c108a62e50f4f6d2339dc7ab03",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/5b400c7744dc51c108a62e50f4f6d2339dc7ab03/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "c5bd76bbec3c364da31abe9c6f49cc24f5a1afd9",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/c5bd76bbec3c364da31abe9c6f49cc24f5a1afd9",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/c5bd76bbec3c364da31abe9c6f49cc24f5a1afd9"
+            }
+        ]
+    },
+    {
+        "sha": "c5bd76bbec3c364da31abe9c6f49cc24f5a1afd9",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-13T01:03:22Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-13T01:03:22Z"
+            },
+            "message": "feat(build): Added build shield to README, committing as feature to test semantic-release.",
+            "tree": {
+                "sha": "f4f3e7931015637c1795f8ee38d680f6b1308426",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/f4f3e7931015637c1795f8ee38d680f6b1308426"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/c5bd76bbec3c364da31abe9c6f49cc24f5a1afd9",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/c5bd76bbec3c364da31abe9c6f49cc24f5a1afd9",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/c5bd76bbec3c364da31abe9c6f49cc24f5a1afd9",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/c5bd76bbec3c364da31abe9c6f49cc24f5a1afd9/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "84bd6a4bf4c56c405c4586d88c21edb1b6e8d5cf",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/84bd6a4bf4c56c405c4586d88c21edb1b6e8d5cf",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/84bd6a4bf4c56c405c4586d88c21edb1b6e8d5cf"
+            }
+        ]
+    },
+    {
+        "sha": "84bd6a4bf4c56c405c4586d88c21edb1b6e8d5cf",
+        "commit": {
+            "author": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-13T00:50:24Z"
+            },
+            "committer": {
+                "name": "Igor Barsi",
+                "email": "ibarsi@unioncreative.com",
+                "date": "2017-02-13T00:50:24Z"
+            },
+            "message": "build(config): Updated travis config as per reccomendations on the semantic-release GitHub page.\n\nhttps://github.com/semantic-release/cli",
+            "tree": {
+                "sha": "df09bb247a8a1e63b81fb4caabdd632a2f71999c",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/git/trees/df09bb247a8a1e63b81fb4caabdd632a2f71999c"
+            },
+            "url": "https://api.github.com/repos/ibarsi/git-velocity/git/commits/84bd6a4bf4c56c405c4586d88c21edb1b6e8d5cf",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/84bd6a4bf4c56c405c4586d88c21edb1b6e8d5cf",
+        "html_url": "https://github.com/ibarsi/git-velocity/commit/84bd6a4bf4c56c405c4586d88c21edb1b6e8d5cf",
+        "comments_url": "https://api.github.com/repos/ibarsi/git-velocity/commits/84bd6a4bf4c56c405c4586d88c21edb1b6e8d5cf/comments",
+        "author": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "committer": {
+            "login": "ibarsi",
+            "id": 3975937,
+            "avatar_url": "https://avatars3.githubusercontent.com/u/3975937?v=3",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ibarsi",
+            "html_url": "https://github.com/ibarsi",
+            "followers_url": "https://api.github.com/users/ibarsi/followers",
+            "following_url": "https://api.github.com/users/ibarsi/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ibarsi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ibarsi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ibarsi/subscriptions",
+            "organizations_url": "https://api.github.com/users/ibarsi/orgs",
+            "repos_url": "https://api.github.com/users/ibarsi/repos",
+            "events_url": "https://api.github.com/users/ibarsi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ibarsi/received_events",
+            "type": "User",
+            "site_admin": false
+        },
+        "parents": [
+            {
+                "sha": "fba1ed4ed2c531ac67e26127920af32f5e3a6984",
+                "url": "https://api.github.com/repos/ibarsi/git-velocity/commits/fba1ed4ed2c531ac67e26127920af32f5e3a6984",
+                "html_url": "https://github.com/ibarsi/git-velocity/commit/fba1ed4ed2c531ac67e26127920af32f5e3a6984"
+            }
+        ]
+    }
+]

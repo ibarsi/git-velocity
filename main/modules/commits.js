@@ -2,7 +2,7 @@
     COMMITS
 ================================================== */
 
-import fetch, { Headers } from 'node-fetch';
+import 'isomorphic-fetch';
 
 import { uniq } from './helpers';
 import { Auth } from './auth';
