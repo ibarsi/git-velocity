@@ -19,15 +19,81 @@ sinon.test = sinon_test.configureTest(sinon);
 sinon.testCase = sinon_test.configureTestCase(sinon);
 
 const fake_auth = {
+    async isCredsTokenInitialized() {
+        return true;
+    },
+    async storeCreds() {
+        return;
+    },
     getCreds() {
         return {
             username: '',
             password: ''
-            };
+        };
     }
 };
 
 describe('Commits', () => {
+    describe('isAuthorized', () => {
+        it(`${ TYPES.BITBUCKET } - Ensure result of isCredsTokenInitialized is returned`, sinon.test(async function() {
+            const Auth_modules_stub = this.stub(auth_modules, 'Auth');
+            Auth_modules_stub.returns(fake_auth);
+            const Auth_stub = this.stub(auth, 'Auth');
+            Auth_stub.returns(fake_auth);
+
+            const bitbucket_commits = Commits(TYPES.BITBUCKET);
+
+            const result = await bitbucket_commits.isAuthorized();
+
+            expect(result).to.equal(await fake_auth.isCredsTokenInitialized());
+        }));
+
+        /* ========= */
+
+        it(`${ TYPES.GITHUB } - Ensure result of isCredsTokenInitialized is returned`, sinon.test(async function() {
+            const Auth_modules_stub = this.stub(auth_modules, 'Auth');
+            Auth_modules_stub.returns(fake_auth);
+            const Auth_stub = this.stub(auth, 'Auth');
+            Auth_stub.returns(fake_auth);
+
+            const github_commits = Commits(TYPES.GITHUB);
+
+            const result = await github_commits.isAuthorized();
+
+            expect(result).to.equal(await fake_auth.isCredsTokenInitialized());
+        }));
+    });
+
+    describe('authorize', () => {
+        it(`${ TYPES.BITBUCKET } - Ensure result of storeCreds is returned`, sinon.test(async function() {
+            const Auth_modules_stub = this.stub(auth_modules, 'Auth');
+            Auth_modules_stub.returns(fake_auth);
+            const Auth_stub = this.stub(auth, 'Auth');
+            Auth_stub.returns(fake_auth);
+
+            const bitbucket_commits = Commits(TYPES.BITBUCKET);
+
+            const result = await bitbucket_commits.authorize();
+
+            expect(result).to.equal(await fake_auth.storeCreds());
+        }));
+
+        /* ========= */
+
+        it(`${ TYPES.GITHUB } - Ensure result of storeCreds is returned`, sinon.test(async function() {
+            const Auth_modules_stub = this.stub(auth_modules, 'Auth');
+            Auth_modules_stub.returns(fake_auth);
+            const Auth_stub = this.stub(auth, 'Auth');
+            Auth_stub.returns(fake_auth);
+
+            const github_commits = Commits(TYPES.GITHUB);
+
+            const result = await github_commits.authorize();
+
+            expect(result).to.equal(await fake_auth.storeCreds());
+        }));
+    });
+
     describe('getCommitsByRepo', () => {
         it(`${ TYPES.BITBUCKET } - Return correct results with no pages`, sinon.test(async function() {
             const Auth_modules_stub = this.stub(auth_modules, 'Auth');
@@ -42,7 +108,7 @@ describe('Commits', () => {
             const result = await bitbucket_commits.getCommitsByRepo('foo', 'bar');
 
             expect(!isEmpty(result)).to.equal(true);
-            expect(result.length === bitbucket_commits_data.values.length).to.equal(true);
+            expect(result.length).to.equal(bitbucket_commits_data.values.length);
 
             fetch_mock.restore();
         }));
@@ -64,7 +130,7 @@ describe('Commits', () => {
             const result = await bitbucket_commits.getCommitsByRepo('foo', 'bar');
 
             expect(!isEmpty(result)).to.equal(true);
-            expect(result.length === bitbucket_commits_data.values.length * 2).to.equal(true);
+            expect(result.length).to.equal(bitbucket_commits_data.values.length * 2);
 
             fetch_mock.restore();
         }));
@@ -83,7 +149,7 @@ describe('Commits', () => {
             expect(isArray(result) && isEmpty(result)).to.equal(true);
         });
 
-    //     /* ========= */
+        /* ========= */
 
         it(`${ TYPES.GITHUB } - Return correct results with one branch, no pages`, sinon.test(async function() {
             const Auth_modules_stub = this.stub(auth_modules, 'Auth');
@@ -99,7 +165,7 @@ describe('Commits', () => {
             const result = await github_commits.getCommitsByRepo('foo', 'bar');
 
             expect(!isEmpty(result)).to.equal(true);
-            expect(result.length === github_commits_data.length).to.equal(true);
+            expect(result.length).to.equal(github_commits_data.length);
 
             fetch_mock.restore();
         }));
@@ -118,7 +184,7 @@ describe('Commits', () => {
             const result = await github_commits.getCommitsByRepo('foo', 'bar');
 
             expect(!isEmpty(result)).to.equal(true);
-            expect(result.length === github_commits_data.length).to.equal(true);
+            expect(result.length).to.equal(github_commits_data.length);
 
             fetch_mock.restore();
         }));
@@ -140,7 +206,7 @@ describe('Commits', () => {
             const result = await github_commits.getCommitsByRepo('foo', 'bar');
 
             expect(!isEmpty(result)).to.equal(true);
-            expect(result.length === github_commits_data.length * 2).to.equal(true);
+            expect(result.length).to.equal(github_commits_data.length * 2);
 
             fetch_mock.restore();
         }));
@@ -164,7 +230,7 @@ describe('Commits', () => {
             const result = await github_commits.getCommitsByRepo('foo', 'bar');
 
             expect(!isEmpty(result)).to.equal(true);
-            expect(result.length === github_commits_data.length * 1.5).to.equal(true);
+            expect(result.length).to.equal(github_commits_data.length * 1.5);
 
             fetch_mock.restore();
         }));
