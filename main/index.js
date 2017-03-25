@@ -59,8 +59,8 @@ console.log(
         const data = await wrapSpinner(commits.getCommitsByRepo, 'Pulling commits...')(repository, owner,
             commit => !velocity.isDateWithinThisTimeFrame(commit.date) && !velocity.isDateWithinLastTimeFrame(commit.date));
 
-        const dashboard = CommitsDashboard();
-        await dashboard.render(format, data);
+        const dashboard = CommitsDashboard(velocity);
+        await dashboard.render(data);
     }
     catch (error) {
         console.error(chalk.red('=== ERROR ==='));

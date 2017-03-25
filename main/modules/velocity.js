@@ -15,6 +15,9 @@ export function Velocity(format) {
     const time = _getFormatTimeValue(format);
 
     return {
+        getFormat() {
+            return format;
+        },
         isDateWithinThisTimeFrame(date) {
             const now = moment();
             const start_of_time = moment(now).startOf(time).hours(0);

@@ -5,6 +5,8 @@
 import fs from 'fs';
 import os from 'os';
 
+import { isEmpty } from 'lodash';
+
 import { isFile } from './helpers';
 
 export function Auth(token) {
@@ -15,7 +17,9 @@ export function Auth(token) {
         async getCreds() {
             return JSON.parse(fs.readFileSync(`${ os.homedir() }/${ token }`, 'utf8'));
         },
-        storeCreds(username, password) {
+        async storeCreds(username, password) {
+            if (isEmpty(username) || isEmpty(password)) { throw new Error('Both username and password are required to store credentials.'); }
+
             return new Promise((resolve, reject) => {
                 fs.writeFile(
                     `${ os.homedir() }/${ token }`,

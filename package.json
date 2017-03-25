@@ -21,7 +21,7 @@
     "clean": "rm -rf dist && mkdir dist",
     "build": "npm run clean && babel main/ -s -D -d dist/",
     "debug": "npm run build && node --debug=12345 dist/index.js",
-    "test": "mocha main/**/*.test.js",
+    "test": "mocha main/**/*.test.js --compilers js:babel-register",
     "start": "node dist/index.js"
   },
   "author": "ibarsi",
@@ -37,17 +37,23 @@
     "clui": "0.3.1",
     "figlet": "1.2.0",
     "inquirer": "3.0.1",
-    "moment": "2.17.1",
-    "request": "2.79.0"
+    "isomorphic-fetch": "2.2.1",
+    "moment": "2.17.1"
   },
   "devDependencies": {
     "babel-cli": "6.9.0",
     "babel-core": "6.9.0",
     "babel-preset-latest-minimal": "1.1.2",
+    "babel-register": "6.23.0",
     "chai": "3.5.0",
+    "chai-as-promised": "6.0.0",
     "commitizen": "2.9.5",
     "cz-conventional-changelog": "1.2.0",
+    "fetch-mock": "5.9.4",
+    "lodash": "4.17.4",
     "mocha": "3.2.0",
-    "semantic-release": "6.3.2"
+    "semantic-release": "6.3.2",
+    "sinon": "2.1.0",
+    "sinon-test": "1.0.1"
   }
 }
