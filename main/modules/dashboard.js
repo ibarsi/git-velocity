@@ -1,3 +1,7 @@
+/* ==================================================
+    DASHBOARD
+================================================== */
+
 import { screen } from 'blessed';
 import { grid, markdown, log, line } from 'blessed-contrib';
 import moment from 'moment';

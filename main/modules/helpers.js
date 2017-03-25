@@ -1,5 +1,5 @@
 /* ==================================================
-    FILE HELPER
+    HELPER
 ================================================== */
 
 import fs from 'fs';
@@ -52,6 +52,5 @@ export default {
     isFile,
     uniq,
     wrapSpinner,
-    requestPromise,
     partial
 };

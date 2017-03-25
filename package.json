@@ -46,10 +46,13 @@
     "babel-preset-latest-minimal": "1.1.2",
     "babel-register": "6.23.0",
     "chai": "3.5.0",
+    "chai-as-promised": "6.0.0",
     "commitizen": "2.9.5",
     "cz-conventional-changelog": "1.2.0",
     "lodash": "4.17.4",
     "mocha": "3.2.0",
-    "semantic-release": "6.3.2"
+    "semantic-release": "6.3.2",
+    "sinon": "2.1.0",
+    "sinon-test": "1.0.1"
   }
 }
