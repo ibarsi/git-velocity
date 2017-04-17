@@ -9,6 +9,20 @@
 When invoked, the tool reads your current directory (looking for `package.json`) and attempts to "guess" reasonable defaults for the repository you're wanting to analyze, accepting user input for overrides.
 Once configured, a dashboard is displayed (courtesy of [blessed-contrib](https://github.com/yaronn/blessed-contrib)) with useful metrics regarding your repository's commit velocity.
 
+## Install
+
+```
+npm install -g git-velocity
+```
+
+## Usage
+
+Navigate to the root directory of the repo you wish to analyze and run the following:
+
+```
+git-velocity
+```
+
 Currently, the following tiles are displayed on the dashboard:
 
 ### INFO
@@ -23,7 +37,7 @@ Simple markdown-supported text area, introducing you to the dashboard, listing s
 
 A layered line graph, comparing previous vs current commits. Length of time compared depends on how the dashboard was configured when the tool was invoked.
 
-## GETTING STARTED ##
+## GETTING STARTED
 
 After cloning and installing dependencies via `npm install`, you're basically all set and ready to go.
 The solution was built using many new language features that were not implemented during the time, and as such transpilation (via Babel) is required.
