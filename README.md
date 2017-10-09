@@ -45,6 +45,6 @@ The solution was built using many new language features that were not implemente
 There are several `npm scripts` that are configured for development, listed below:
 
 * `build` - Transpiles source files and generates distributables in `/dist`.
-* `debug` - Executes `build`, then runs the distributed application files with the internal debugger listening on port 12345.
+* `debug` - Executes `build`, then runs the distributed application files with the internal debugger.
 There is a VS Code `launch.json` file configured for debugging and runs this command internally.
 * `start` - Runs the distributed application.
