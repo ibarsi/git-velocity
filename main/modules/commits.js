@@ -130,7 +130,11 @@ function GitHubCommits(auth) {
             };
 
             const branches = await fetch(config.branches_url.replace('{owner}', owner).replace('{repo}', repository), options.config)
-                .then(response => response.json());
+                .then(response => {
+                    if (response.status !== 200) { throw new Error(`ERROR: ${ response.status } - ${ response.statusText }`); }
+
+                    return response.json();
+                });
 
             const branch_commit_results = await Promise.all(branches.map(branch => {
                 return _requestPagedResponse(Object.assign({}, options, {

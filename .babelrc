@@ -1,6 +1,9 @@
 {
     "presets": [
-        "latest-minimal"
+        "latest"
+    ],
+    "plugins": [
+        "transform-runtime"
     ],
     "sourceMaps": true,
     "retainLines": true

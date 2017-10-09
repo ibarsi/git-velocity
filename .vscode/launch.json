@@ -17,7 +17,7 @@
                 "debug"
             ],
             "console": "integratedTerminal",
-            "port": 12345,
+            "port": 9229,
             "cwd": "${workspaceRoot}",
             "sourceMaps": true,
             "outFiles": [

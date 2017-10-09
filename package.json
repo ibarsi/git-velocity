@@ -20,7 +20,7 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "clean": "rm -rf dist && mkdir dist",
     "build": "npm run clean && babel main/ -s -D -d dist/",
-    "debug": "npm run build && node --debug=12345 dist/index.js",
+    "debug": "npm run build && node --inspect dist/index.js",
     "test": "mocha main/**/*.test.js --compilers js:babel-register",
     "start": "node dist/index.js"
   },
@@ -30,6 +30,7 @@
     "url": "https://github.com/ibarsi/git-velocity/issues"
   },
   "dependencies": {
+    "babel-runtime": "6.26.0",
     "blessed": "0.1.81",
     "blessed-contrib": "4.7.5",
     "chalk": "1.1.3",
@@ -42,8 +43,9 @@
   },
   "devDependencies": {
     "babel-cli": "6.9.0",
-    "babel-core": "6.9.0",
-    "babel-preset-latest-minimal": "1.1.2",
+    "babel-core": "6.26.0",
+    "babel-plugin-transform-runtime": "6.23.0",
+    "babel-preset-latest": "6.24.1",
     "babel-register": "6.23.0",
     "chai": "3.5.0",
     "chai-as-promised": "6.0.0",
